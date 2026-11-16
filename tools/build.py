@@ -37,20 +37,31 @@ def frontmatter(text):
     match = re.match(r'\A---\r?\n(.*?)\r?\n---(?:\r?\n|\Z)', text, re.S)
     if not match:
         raise ValueError('missing YAML frontmatter')
-    fields, current = {}, None
+    fields, current, block = {}, None, False
     for line in match[1].splitlines():
         field = re.match(r'^([a-z][a-z-]*):\s*(.*)$', line)
         if field:
             current, value = field.groups()
             if current in fields:
                 raise ValueError('duplicate frontmatter field: ' + current)
-            if value in ('>', '|', '>-', '|-'):
+            block = value in ('>', '|', '>-', '|-')
+            if block:
                 fields[current] = ''
             elif value.startswith('"'):
                 fields[current] = json.loads(value)
+                if not isinstance(fields[current], str):
+                    raise ValueError('frontmatter fields must be strings')
+            elif value.startswith("'"):
+                if not re.fullmatch(r"'(?:[^']|'')*'", value):
+                    raise ValueError('unbalanced single-quoted frontmatter string')
+                fields[current] = value[1:-1].replace("''", "'")
             else:
-                fields[current] = value.strip("'")
-        elif line[:1].isspace() and current:
+                reserved = value[:1] in '[{!&*#?>|%@`' if value else False
+                typed = value.lower() in ('null', '~', 'true', 'false', 'yes', 'no', 'on', 'off') or re.fullmatch(r'[-+]?(?:\d[\d_.]*(?:e[-+]?\d+)?|\.inf|\.nan)', value, re.I)
+                if reserved or typed or re.search(r':(?:\s|$)', value) or value.startswith('- '):
+                    raise ValueError('quote plain frontmatter values containing YAML type/collection syntax')
+                fields[current] = value
+        elif line[:1].isspace() and current and block:
             fields[current] += ' ' + line.strip()
         elif line.strip():
             raise ValueError('unsupported frontmatter line')
@@ -95,6 +106,8 @@ def validate_package(root):
         return errors
     try:
         manifest = json.loads((root / 'plugin.json').read_text())
+        if not isinstance(manifest, dict):
+            raise ValueError('plugin manifest must be a JSON object')
         for key in ('name', 'version', 'description', 'license'):
             if not isinstance(manifest.get(key), str) or not manifest[key].strip():
                 errors.append('manifest missing ' + key)
@@ -107,6 +120,8 @@ def validate_package(root):
         overlay_path = root / '.codex-plugin/plugin.json'
         if overlay_path.exists():
             overlay = json.loads(overlay_path.read_text())
+            if not isinstance(overlay, dict):
+                raise ValueError('Codex overlay must be a JSON object')
             for key in ('name', 'version', 'description', 'license'):
                 if overlay.get(key) != manifest.get(key):
                     errors.append('overlay differs: ' + key)
@@ -188,6 +203,9 @@ def validate_archive(path):
                 name = PurePosixPath(entry.filename)
                 if name.is_absolute() or '..' in name.parts or '\\' in entry.filename or ':' in entry.filename or '\x00' in entry.filename:
                     return ['unsafe archive path: ' + entry.filename]
+                canonical = name.as_posix() + ('/' if entry.is_dir() else '')
+                if entry.filename != canonical:
+                    return ['noncanonical archive path: ' + entry.filename]
                 if stat.S_ISLNK(entry.external_attr >> 16):
                     return ['archive symlink: ' + entry.filename]
             with tempfile.TemporaryDirectory() as directory:

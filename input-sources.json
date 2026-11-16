@@ -7,7 +7,8 @@
     "repository": "https://github.com/obra/superpowers",
     "files": 236,
     "skipped_symlinks": [],
-    "differences_from_audit": []
+    "differences_from_audit": [],
+    "audited_matching_commit": "22f0b463e7a5e579904dd6211a520321035526f7"
   },
   {
     "project": "agent-skills",
@@ -19,7 +20,8 @@
     "skipped_symlinks": [
       ".opencode/skills"
     ],
-    "differences_from_audit": []
+    "differences_from_audit": [],
+    "audited_matching_commit": "39b723ceebf81474d0557c1fecd01eddab585563"
   },
   {
     "project": "ponytail",
@@ -29,6 +31,7 @@
     "repository": "https://github.com/DietrichGebert/ponytail",
     "files": 216,
     "skipped_symlinks": [],
-    "differences_from_audit": []
+    "differences_from_audit": [],
+    "audited_matching_commit": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846"
   }
 ]

@@ -1,0 +1,197 @@
+{
+  "kind": "offline description selection, not native routing",
+  "selections": [
+    {
+      "id": 1,
+      "primary": "engineering",
+      "secondary": [],
+      "reason": "Explicit Unified Engineering help and invocation guidance."
+    },
+    {
+      "id": 2,
+      "primary": "design",
+      "secondary": [],
+      "reason": "Unsettled requirements and comparison of implementation approaches."
+    },
+    {
+      "id": 3,
+      "primary": "plan",
+      "secondary": [],
+      "reason": "Agreed requirements need ordered tasks and acceptance criteria."
+    },
+    {
+      "id": 4,
+      "primary": "implement",
+      "secondary": [],
+      "reason": "Execution of an approved multi-file implementation plan."
+    },
+    {
+      "id": 5,
+      "primary": "debug",
+      "secondary": [],
+      "reason": "Reported exception and stack trace require cause investigation."
+    },
+    {
+      "id": 6,
+      "primary": "test",
+      "secondary": [],
+      "reason": "Explicit request for meaningful parser regression tests."
+    },
+    {
+      "id": 7,
+      "primary": "review",
+      "secondary": [],
+      "reason": "Explicit diff-only pull request review."
+    },
+    {
+      "id": 8,
+      "primary": "ponytail-audit",
+      "secondary": [],
+      "reason": "Whole-repository audit matches its scope directly."
+    },
+    {
+      "id": 9,
+      "primary": "simplify",
+      "secondary": [],
+      "reason": "Reduce nesting in working code while preserving behavior."
+    },
+    {
+      "id": 10,
+      "primary": "ship",
+      "secondary": [],
+      "reason": "Prepare a commit message and changelog for completed changes."
+    },
+    {
+      "id": 11,
+      "primary": "api",
+      "secondary": [],
+      "reason": "Design public contract, pagination and consistent errors."
+    },
+    {
+      "id": 12,
+      "primary": "browser",
+      "secondary": [],
+      "reason": "Runtime browser interactions, console and keyboard-focus verification."
+    },
+    {
+      "id": 13,
+      "primary": "ci",
+      "secondary": [],
+      "reason": "Repair pipeline caching and automated quality gates; CI is more specific than general debugging."
+    },
+    {
+      "id": 14,
+      "primary": "migrate",
+      "secondary": [],
+      "reason": "Staged production schema compatibility is the defining concern; plan is also a plausible workflow description."
+    },
+    {
+      "id": 15,
+      "primary": "docs",
+      "secondary": [],
+      "reason": "Substantive architecture decision and API documentation repairs."
+    },
+    {
+      "id": 16,
+      "primary": "frontend",
+      "secondary": [],
+      "reason": "Build an accessible responsive UI using an existing design system."
+    },
+    {
+      "id": 17,
+      "primary": "observe",
+      "secondary": [],
+      "reason": "Add structured correlated logs and latency metrics."
+    },
+    {
+      "id": 18,
+      "primary": "performance",
+      "secondary": [],
+      "reason": "Investigate a slow query under representative load before changes."
+    },
+    {
+      "id": 19,
+      "primary": "security",
+      "secondary": [],
+      "reason": "Explicit assessment of authorization and upload trust boundaries."
+    },
+    {
+      "id": 20,
+      "primary": "context",
+      "secondary": [],
+      "reason": "Durable interrupted-task handoff and context trimming."
+    },
+    {
+      "id": 21,
+      "primary": "standards",
+      "secondary": [],
+      "reason": "Explicit project quality standards and coverage ratchet."
+    },
+    {
+      "id": 22,
+      "primary": "sources",
+      "secondary": [],
+      "reason": "Verify version-sensitive framework behavior from authoritative documentation."
+    },
+    {
+      "id": 23,
+      "primary": "delegate",
+      "secondary": [],
+      "reason": "Explicit named invocation satisfies manual-only policy; parallel delegated execution is requested."
+    },
+    {
+      "id": 24,
+      "primary": "challenge",
+      "secondary": [],
+      "reason": "Explicit named invocation satisfies manual-only policy; fresh-context adversarial review is requested."
+    },
+    {
+      "id": 25,
+      "primary": "skill-authoring",
+      "secondary": [],
+      "reason": "Explicit named invocation satisfies manual-only policy; reusable skill creation and evaluation are requested."
+    },
+    {
+      "id": 26,
+      "primary": "workflow-diagnostics",
+      "secondary": [],
+      "reason": "Explicit named invocation satisfies manual-only policy; repeated completed work is the reported session problem."
+    },
+    {
+      "id": 27,
+      "primary": "ponytail-debt",
+      "secondary": [],
+      "reason": "Explicit named invocation satisfies manual-only policy; shortcut debt inventory is requested."
+    },
+    {
+      "id": 28,
+      "primary": "ponytail-gain",
+      "secondary": [],
+      "reason": "Explicit named invocation satisfies manual-only policy; published benchmark figures are requested."
+    },
+    {
+      "id": 29,
+      "primary": null,
+      "secondary": [],
+      "reason": "Greeting needs no engineering workflow."
+    },
+    {
+      "id": 30,
+      "primary": null,
+      "secondary": [],
+      "reason": "Code explanation alone is excluded by engineering and the user explicitly rejects a development workflow."
+    },
+    {
+      "id": 31,
+      "primary": null,
+      "secondary": [],
+      "reason": "A one-word prose typo is a mechanical edit explicitly excluded by docs and test; no substantive development workflow is warranted."
+    },
+    {
+      "id": 32,
+      "primary": null,
+      "secondary": [],
+      "reason": "Short conceptual explanation requires no coding workflow."
+    }
+  ]
+}

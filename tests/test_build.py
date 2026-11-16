@@ -120,6 +120,46 @@ class PackageTests(unittest.TestCase):
             z.writestr(i, '../outside')
         self.assertTrue(any('symlink' in e for e in build.validate_archive(out)))
 
+    def test_rejects_noncanonical_archive_paths_before_extraction(self):
+        for alias in ('./plugin.json', 'skills//sample/SKILL.md'):
+            with self.subTest(alias=alias):
+                out = self.base / 'alias.zip'
+                with zipfile.ZipFile(out, 'w') as z:
+                    for file in self.root.rglob('*'):
+                        if file.is_file():
+                            z.write(file, file.relative_to(self.root).as_posix())
+                    z.writestr(alias, (self.root / 'plugin.json').read_text())
+                self.assertTrue(any('noncanonical' in e for e in build.validate_archive(out)))
+
+    def test_invalid_yaml_description_does_not_replace_good_artifact(self):
+        output = self.base / 'good.zip'
+        build.write_archive(self.root, output)
+        previous = output.read_bytes()
+        for description in ("'Unclosed string", 'Use when: editing code', '[one, two]', '{a: b}', 'null', 'true', '123'):
+            with self.subTest(description=description):
+                (self.skill / 'SKILL.md').write_text('---\nname: sample\ndescription: ' + description + '\n---\nBody\n')
+                with self.assertRaises(ValueError):
+                    build.write_archive(self.root, output)
+                self.assertEqual(previous, output.read_bytes())
+
+    def test_frontmatter_supports_the_documented_string_subset(self):
+        for description in ('"Use when: editing code"', "'Use when it''s needed'", '>\n  Use when editing\n  code with blocks.'):
+            with self.subTest(description=description):
+                (self.skill / 'SKILL.md').write_text('---\nname: sample\ndescription: ' + description + '\n---\nBody\n')
+                self.assertEqual(build.validate_package(self.root), [])
+
+    def test_nonobject_manifest_returns_actionable_errors(self):
+        for value in ([], None, 'text'):
+            with self.subTest(value=value):
+                (self.root / 'plugin.json').write_text(json.dumps(value))
+                self.assertTrue(any('object' in e for e in build.validate_package(self.root)))
+        self.write_manifest()
+        overlay = self.root / '.codex-plugin'
+        overlay.mkdir()
+        for value in ([], None):
+            (overlay / 'plugin.json').write_text(json.dumps(value))
+            self.assertTrue(any('object' in e for e in build.validate_package(self.root)))
+
     def test_assembly_preserves_sources_and_closes_all_references(self):
         target = self.base / 'assembled'
         build.assemble(target)
