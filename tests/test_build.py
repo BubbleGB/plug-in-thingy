@@ -1,0 +1,143 @@
+import importlib.util
+import json
+from pathlib import Path
+import tempfile
+import unittest
+import warnings
+import zipfile
+
+
+SCRIPT = Path(__file__).resolve().parents[1] / 'tools' / 'build.py'
+spec = importlib.util.spec_from_file_location('plugin_build', SCRIPT)
+build = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(build)
+
+
+class PackageTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.base = Path(self.tmp.name)
+        self.root = self.base / 'plugin'
+        self.skill = self.root / 'skills' / 'sample'
+        self.skill.mkdir(parents=True)
+        self.manifest = {'name': 'sample-plugin', 'version': '0.1.0', 'description': 'Example skill plugin', 'license': 'MIT'}
+        self.write_manifest()
+        (self.root / 'LICENSE').write_text('MIT License\nExample copyright\n')
+        self.body('Follow the task.\n')
+
+    def write_manifest(self):
+        (self.root / 'plugin.json').write_text(json.dumps(self.manifest))
+
+    def body(self, text):
+        (self.skill / 'SKILL.md').write_text('---\nname: sample\ndescription: Use when testing the package.\n---\n\n' + text)
+
+    def test_valid_minimal_package(self):
+        self.assertEqual(build.validate_package(self.root), [])
+
+    def test_rejects_manifest_hooks(self):
+        self.manifest['hooks'] = './hooks/hooks.json'
+        self.write_manifest()
+        self.assertTrue(any('hooks' in e for e in build.validate_package(self.root)))
+
+    def test_rejects_nested_plugin_and_marketplace(self):
+        (self.skill / 'plugin.json').write_text('{}')
+        self.assertTrue(any('manifest' in e for e in build.validate_package(self.root)))
+        (self.skill / 'marketplace.json').write_text('{}')
+        self.assertTrue(any('marketplace' in e for e in build.validate_package(self.root)))
+
+    def test_detects_frontmatter_mismatch(self):
+        (self.skill / 'SKILL.md').write_text('---\nname: other\ndescription: Hello\n---\nBody\n')
+        self.assertTrue(any('name' in e for e in build.validate_package(self.root)))
+
+    def test_missing_reference_is_rejected(self):
+        self.body('Read [checks](references/checks.md).\n')
+        self.assertTrue(any('missing' in e for e in build.validate_package(self.root)))
+
+    def test_reference_must_stay_in_skill_package(self):
+        (self.root / 'check.md').write_text('# Check\n')
+        self.body('Read [checks](../../check.md).\n')
+        self.assertTrue(any('escapes skill' in e for e in build.validate_package(self.root)))
+
+    def test_checks_nested_reference_and_anchor(self):
+        refs = self.skill / 'references'
+        refs.mkdir()
+        (refs / 'check.md').write_text('# Checks\n\nSee [absent](missing.md).\n')
+        self.body('Read [checks](references/check.md#nonexistent).\n')
+        errors = build.validate_package(self.root)
+        self.assertTrue(any('anchor' in e for e in errors))
+        self.assertTrue(any('missing' in e for e in errors))
+
+    def test_code_example_links_are_not_dependencies(self):
+        self.body('```md\n[Example](does-not-exist.md)\n```\n')
+        self.assertEqual(build.validate_package(self.root), [])
+
+    def test_symlink_is_rejected(self):
+        (self.skill / 'escape.md').symlink_to(self.base / 'outside.md')
+        self.assertTrue(any('symlink' in e for e in build.validate_package(self.root)))
+
+    def test_overlay_identity_must_match(self):
+        overlay = self.root / '.codex-plugin'
+        overlay.mkdir()
+        (overlay / 'plugin.json').write_text(json.dumps({**self.manifest, 'version': '9.0.0', 'skills': './skills/'}))
+        self.assertTrue(any('version' in e for e in build.validate_package(self.root)))
+
+    def test_deterministic_rootless_archive(self):
+        a, b = self.base / 'a.zip', self.base / 'b.zip'
+        self.assertEqual(build.write_archive(self.root, a), build.write_archive(self.root, b))
+        with zipfile.ZipFile(a) as z:
+            self.assertIn('plugin.json', z.namelist())
+            self.assertIn('skills/sample/SKILL.md', z.namelist())
+        self.assertEqual(build.validate_archive(a), [])
+
+    def test_bad_build_does_not_replace_previous_archive(self):
+        out = self.base / 'good.zip'
+        build.write_archive(self.root, out)
+        previous = out.read_bytes()
+        self.body('Read [missing](references/no.md).\n')
+        with self.assertRaises(ValueError):
+            build.write_archive(self.root, out)
+        self.assertEqual(out.read_bytes(), previous)
+
+    def test_archive_traversal_and_duplicates_rejected(self):
+        out = self.base / 'bad.zip'
+        with zipfile.ZipFile(out, 'w') as z:
+            z.writestr('../outside', 'bad')
+        self.assertTrue(any('unsafe' in e for e in build.validate_archive(out)))
+        with zipfile.ZipFile(out, 'w') as z:
+            z.writestr('plugin.json', '{}')
+            with warnings.catch_warnings():
+                warnings.simplefilter('ignore', UserWarning)
+                z.writestr('plugin.json', '{}')
+        self.assertTrue(any('duplicate' in e for e in build.validate_archive(out)))
+
+    def test_archive_symlink_rejected(self):
+        out = self.base / 'link.zip'
+        with zipfile.ZipFile(out, 'w') as z:
+            i = zipfile.ZipInfo('link')
+            i.create_system = 3
+            i.external_attr = 0o120777 << 16
+            z.writestr(i, '../outside')
+        self.assertTrue(any('symlink' in e for e in build.validate_archive(out)))
+
+    def test_assembly_preserves_sources_and_closes_all_references(self):
+        target = self.base / 'assembled'
+        build.assemble(target)
+        self.assertEqual(build.validate_package(target), [])
+        self.assertEqual(len(list((target / 'skills').glob('*/SKILL.md'))), 28)
+        for name in ('ponytail-audit', 'ponytail-debt', 'ponytail-gain'):
+            original = SCRIPT.parents[1] / 'inputs/ponytail/skills' / name / 'SKILL.md'
+            self.assertEqual((target / 'skills' / name / 'SKILL.md').read_bytes(), original.read_bytes())
+        sources = json.loads((target / 'SOURCES.json').read_text())
+        originals = {p.relative_to(SCRIPT.parents[1] / 'inputs').as_posix()
+                     for p in (SCRIPT.parents[1] / 'inputs').glob('*/skills/*/SKILL.md')}
+        covered = {s['path'] for entry in sources['skills'] for s in entry['sources']}
+        self.assertEqual(covered, originals)
+
+    def test_refuses_to_assemble_over_existing_user_files(self):
+        with self.assertRaises(ValueError):
+            build.assemble(self.root)
+
+
+if __name__ == '__main__':
+    unittest.main()

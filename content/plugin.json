@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "unified-engineering",
+  "version": "0.1.0",
+  "description": "Practical engineering skills: simple complete solutions, proportionate workflows and focused specialist expertise.",
+  "author": {"name": "Unified Engineering contributors"},
+  "license": "MIT",
+  "keywords": ["engineering", "skills", "debugging", "testing", "security", "simplicity"]
+}

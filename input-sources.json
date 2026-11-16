@@ -1,0 +1,34 @@
+[
+  {
+    "project": "superpowers",
+    "archive": "superpowers-main.zip",
+    "sha256": "75032ef73f7605e1f923831a677d22daae963fd0bc6b26a89d805a62016a4af5",
+    "version": "7.0.2",
+    "repository": "https://github.com/obra/superpowers",
+    "files": 236,
+    "skipped_symlinks": [],
+    "differences_from_audit": []
+  },
+  {
+    "project": "agent-skills",
+    "archive": "agent-skills-main.zip",
+    "sha256": "16674bc834539d76974e40e50b595a628a0ebaefa7e86dfddbfea96827d23b17",
+    "version": "0.6.16",
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "files": 251,
+    "skipped_symlinks": [
+      ".opencode/skills"
+    ],
+    "differences_from_audit": []
+  },
+  {
+    "project": "ponytail",
+    "archive": "ponytail-main_1_.zip",
+    "sha256": "fb1e4285aaa30fa1667d7c644f8a28142392d27ec719bf11564627c6fdb63d83",
+    "version": "5.3.3",
+    "repository": "https://github.com/DietrichGebert/ponytail",
+    "files": 216,
+    "skipped_symlinks": [],
+    "differences_from_audit": []
+  }
+]
