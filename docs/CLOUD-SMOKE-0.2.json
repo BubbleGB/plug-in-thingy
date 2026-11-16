@@ -1,0 +1,688 @@
+{
+  "date": "2026-11-16",
+  "release": "0.2.0",
+  "release_sha256": "01f6b9268891348f18f223a60cbe26362577b2734844696db1b4e30bc0a7651e",
+  "cloud_package_root": "skill://Plugin_ba336d3e967081919bb2c87af5790d32",
+  "automatically_listed": 24,
+  "explicitly_readable_skills": 30,
+  "manual_not_in_automatic_listing": [
+    "challenge",
+    "delegate",
+    "ponytail-debt",
+    "ponytail-gain",
+    "skill-authoring",
+    "workflow-diagnostics"
+  ],
+  "markdown_resources": 95,
+  "exact_matches": 95,
+  "checks": [
+    {
+      "path": "skills/api/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/api/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/api/references/technical-details.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/architecture/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/architecture/references/module-design.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/architecture/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/browser/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/browser/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/browser/references/technical-details.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/challenge/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/challenge/references/adversarial-review.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/challenge/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/ci/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/ci/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/ci/references/technical-details.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/context/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/context/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/context/references/technical-details.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/debug/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/debug/references/bug-variants.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/debug/references/defense-in-depth.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/debug/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/debug/references/root-cause-tracing.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/delegate/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/delegate/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/design/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/design/references/ADR-FORMAT.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/design/references/GLOSSARY-FORMAT.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/design/references/domain-vocabulary.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/design/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/docs/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/docs/references/ADR-FORMAT.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/docs/references/GLOSSARY-FORMAT.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/docs/references/domain-vocabulary.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/docs/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/docs/references/technical-details.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/engineering/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/engineering/references/catalog.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/engineering/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/frontend/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/frontend/references/accessibility-checklist.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/frontend/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/frontend/references/technical-details.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/implement/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/implement/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/migrate/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/migrate/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/migrate/references/technical-details.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/observe/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/observe/references/observability-checklist.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/observe/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/observe/references/technical-details.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/performance/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/performance/references/optimization-patterns.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/performance/references/performance-checklist.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/performance/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/performance/references/technical-details.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/plan/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/plan/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/ponytail-audit/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/ponytail-debt/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/ponytail-gain/README.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/ponytail-gain/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/ponytail-gain/benchmarks/results/2026-10-07-agentic.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/prototype/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/prototype/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/review/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/review/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/security/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/security/references/bug-variants.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/security/references/hardening-patterns.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/security/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/security/references/security-checklist.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/ship/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/ship/references/launch-patterns.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/ship/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/simplify/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/simplify/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/simplify/references/technical-details.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/skill-authoring/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/skill-authoring/references/discovery.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/skill-authoring/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/sources/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/sources/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/standards/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/standards/references/floor-guard.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/standards/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/standards/references/technical-details.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/test/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/test/references/advanced-testing.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/test/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/test/references/testing-patterns.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/test/references/writing-good-tests.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/workflow-diagnostics/SKILL.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    },
+    {
+      "path": "skills/workflow-diagnostics/references/preferences.md",
+      "readable": true,
+      "exact": true,
+      "normalized_match": true,
+      "paginated": false
+    }
+  ],
+  "limits": [
+    "Checks verify current cloud discovery and exact resource retrieval, not standalone implicit activation reliability, Android UI actions, lifecycle hooks or the future patch installation."
+  ]
+}

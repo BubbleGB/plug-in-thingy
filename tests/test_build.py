@@ -160,6 +160,47 @@ class PackageTests(unittest.TestCase):
             (overlay / 'plugin.json').write_text(json.dumps(value))
             self.assertTrue(any('object' in e for e in build.validate_package(self.root)))
 
+    def test_invocation_metadata_rejects_malformed_or_nonboolean_policy(self):
+        agents = self.skill / 'agents'
+        agents.mkdir()
+        for text in ('broken: [', 'policy:\n  allow_implicit_invocation: "false"\n',
+                     'policy:\n  allow_implicit_invocation: false\n  allow_implicit_invocation: true\n'):
+            with self.subTest(text=text):
+                (agents / 'openai.yaml').write_text(text)
+                self.assertTrue(any('metadata' in e for e in build.validate_package(self.root)))
+        (agents / 'openai.yaml').unlink()
+        (agents / 'openai.yaml').mkdir()
+        self.assertTrue(any('metadata' in e for e in build.validate_package(self.root)))
+
+    def test_manual_invocation_policy_must_match_source_map(self):
+        (self.root / 'SOURCES.json').write_text(json.dumps({'skills': [{'name': 'sample', 'manual_only': True}]}))
+        agents = self.skill / 'agents'
+        agents.mkdir()
+        policy = agents / 'openai.yaml'
+        policy.write_text('policy:\n  allow_implicit_invocation: true\n')
+        self.assertTrue(any('invocation policy' in e for e in build.validate_package(self.root)))
+        policy.write_text('policy:\n  allow_implicit_invocation: false\n')
+        self.assertEqual(build.validate_package(self.root), [])
+        policy.unlink()
+        self.assertTrue(any('invocation policy' in e for e in build.validate_package(self.root)))
+
+    def test_skill_folder_without_entry_cannot_silently_disappear(self):
+        (self.root / 'skills' / 'orphan').mkdir()
+        self.assertTrue(any('SKILL.md' in e for e in build.validate_package(self.root)))
+
+    def test_invalid_utf8_reference_returns_errors_and_preserves_archive(self):
+        output = self.base / 'good.zip'
+        build.write_archive(self.root, output)
+        previous = output.read_bytes()
+        reference = self.skill / 'references' / 'check.md'
+        reference.parent.mkdir()
+        reference.write_bytes(b'\xff')
+        self.body('Read [checks](references/check.md#checks).\n')
+        self.assertTrue(any('UTF-8' in e for e in build.validate_package(self.root)))
+        with self.assertRaises(ValueError):
+            build.write_archive(self.root, output)
+        self.assertEqual(output.read_bytes(), previous)
+
     def test_assembly_preserves_sources_and_closes_all_references(self):
         target = self.base / 'assembled'
         build.assemble(target)

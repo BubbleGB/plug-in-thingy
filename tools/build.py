@@ -88,6 +88,46 @@ def anchors(text):
     return result
 
 
+def metadata_policy(text):
+    """Validate our generated OpenAI metadata subset, returning implicit policy.
+
+    This deliberately is not a general YAML parser: this skills-only package
+    supports string interface fields and a boolean invocation policy, no tools.
+    """
+    sections, section, seen, implicit = {}, None, set(), True
+    interface_fields = {'display_name', 'short_description', 'default_prompt',
+                        'icon_small', 'icon_large', 'brand_color'}
+    for line in text.splitlines():
+        if not line.strip() or line.lstrip().startswith('#'):
+            continue
+        top = re.fullmatch(r'(interface|policy):\s*', line)
+        if top:
+            section = top[1]
+            if section in sections:
+                raise ValueError('duplicate metadata section: ' + section)
+            sections[section] = 0
+            continue
+        field = re.fullmatch(r'  ([a-z_]+):\s+(.+)', line)
+        if section is None or field is None:
+            raise ValueError('unsupported metadata layout')
+        key, value = field.groups()
+        if (section, key) in seen:
+            raise ValueError('duplicate metadata field: ' + key)
+        seen.add((section, key))
+        sections[section] += 1
+        if section == 'policy':
+            if key != 'allow_implicit_invocation' or value not in ('true', 'false'):
+                raise ValueError('invocation policy must be a YAML boolean')
+            implicit = value == 'true'
+        elif key not in interface_fields:
+            raise ValueError('unsupported interface metadata field: ' + key)
+        elif not frontmatter('---\nvalue: ' + value + '\n---\n')['value']:
+            raise ValueError('interface metadata must be a nonempty string')
+    if not sections or any(count == 0 for count in sections.values()):
+        raise ValueError('metadata sections must contain supported fields')
+    return implicit
+
+
 def validate_package(root):
     root = Path(root).resolve()
     errors = []
@@ -139,17 +179,52 @@ def validate_package(root):
     skills = sorted(skill_root.glob('*/SKILL.md'))
     if not skills:
         errors.append('no discoverable skills')
-    for skill in skills:
+    if skill_root.is_dir():
+        for folder in skill_root.iterdir():
+            if folder.is_dir() and not (folder / 'SKILL.md').is_file():
+                errors.append('skill directory missing SKILL.md: ' + folder.name)
+    expected_policies = {}
+    if (root / 'SOURCES.json').exists():
         try:
-            fields = frontmatter(skill.read_text())
+            source_map = json.loads((root / 'SOURCES.json').read_text(encoding='utf-8'))
+            if not isinstance(source_map, dict) or not isinstance(source_map.get('skills'), list):
+                raise ValueError('expected an object with a skills list')
+            for entry in source_map['skills']:
+                if not isinstance(entry, dict) or not isinstance(entry.get('name'), str) or not isinstance(entry.get('manual_only'), bool):
+                    raise ValueError('each skill needs a name and boolean manual_only')
+                if entry['name'] in expected_policies:
+                    raise ValueError('duplicate source-map skill')
+                expected_policies[entry['name']] = not entry['manual_only']
+            if set(expected_policies) != {skill.parent.name for skill in skills}:
+                errors.append('source-map skills differ from discoverable skills')
+        except (OSError, ValueError) as exc:
+            errors.append('invalid source map: ' + str(exc))
+    for skill in skills:
+        documents = {}
+        for file in skill.parent.rglob('*.md'):
+            try:
+                documents[file.resolve()] = file.read_text(encoding='utf-8')
+            except (OSError, UnicodeError) as exc:
+                errors.append(f'unreadable UTF-8 document {file.relative_to(root)}: {exc}')
+        try:
+            fields = frontmatter(documents.get(skill.resolve(), ''))
             if fields.get('name') != skill.parent.name or not NAME.fullmatch(fields.get('name', '')):
                 errors.append('skill name mismatch: ' + str(skill.relative_to(root)))
             if not fields.get('description') or len(fields['description']) > 1024:
                 errors.append('invalid description: ' + skill.parent.name)
         except (ValueError, OSError) as exc:
             errors.append(f'invalid skill {skill.parent.name}: {exc}')
-        for file in skill.parent.rglob('*.md'):
-            for link in links(file.read_text()):
+        metadata = skill.parent / 'agents/openai.yaml'
+        try:
+            if metadata.exists() and not metadata.is_file():
+                raise ValueError('metadata path must be a regular file')
+            implicit = metadata_policy(metadata.read_text(encoding='utf-8')) if metadata.is_file() else True
+            if skill.parent.name in expected_policies and implicit != expected_policies[skill.parent.name]:
+                errors.append('invocation policy differs from source map: ' + skill.parent.name)
+        except (OSError, ValueError) as exc:
+            errors.append(f'invalid metadata {skill.parent.name}: {exc}')
+        for file, text in documents.items():
+            for link in links(text):
                 if re.match(r'^[a-zA-Z][\w+.-]*:', link) or link.startswith('//'):
                     continue
                 path, _, anchor = link.partition('#')
@@ -158,7 +233,7 @@ def validate_package(root):
                     errors.append(f'link escapes skill: {file.relative_to(root)} -> {link}')
                 elif not target.is_file():
                     errors.append(f'missing reference: {file.relative_to(root)} -> {link}')
-                elif anchor and target.suffix == '.md' and anchor not in anchors(target.read_text()):
+                elif anchor and target in documents and anchor not in anchors(documents[target]):
                     errors.append(f'missing anchor: {file.relative_to(root)} -> {link}')
     return errors
 

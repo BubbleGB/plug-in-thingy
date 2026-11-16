@@ -1,4 +1,4 @@
-# Unified Engineering 0.2.0
+# Unified Engineering 0.2.1
 
 One skills-only engineering plugin combining Ponytail's simplicity, Superpowers' development methods, Addy Osmani's specialist engineering expertise and selected Matt Pocock methods, with refinements informed by the Karpathy-inspired community guidelines. This is an independent adaptation, not an official release or endorsement by those projects.
 
@@ -43,7 +43,7 @@ One workflow owns the task; specialists contribute relevant checks without resta
 
 ## Install and test on ChatGPT / Android
 
-Use the single plugin upload ZIP, **unified-engineering-0.2.0.zip**. The separate **source ZIP is for maintenance**, not plugin upload. The upload ZIP has one plugin root, a portable manifest and one Codex compatibility overlay. It contains no marketplace catalog or nested original plugins.
+Use the single plugin upload ZIP, **unified-engineering-0.2.1.zip**. The separate **source ZIP is for maintenance**, not plugin upload. The upload ZIP has one plugin root, a portable manifest and one Codex compatibility overlay. It contains no marketplace catalog or nested original plugins.
 
 Use the actual plugin upload/import flow available to your account. Android/account-specific plugin-management controls may vary; no CLI, Android terminal, Node installation or local MCP server is needed for the plugin's instruction-only core. If the upload is rejected, retain the exact error and archive version; do not turn this into a marketplace archive blindly.
 
@@ -51,7 +51,7 @@ Keep existing working plugins installed. For an uncontaminated standalone test, 
 
 After upload, check:
 
-1. The cloud registry lists all 28 skills and can read their packaged references.
+1. The cloud registry lists automatic skills and can explicitly read the full catalog and packaged references.
 2. A typo stays a direct edit; an approved plan is reused; review-only requests stay read-only.
 3. A logic bug gets root-cause evidence and a meaningful regression check.
 4. Lite security work still protects the boundary; Ultra respects settled requirements.
@@ -74,3 +74,9 @@ MIT. Retain LICENSE, the four original notices in licenses/, ATTRIBUTION.md and 
 Architecture assessments and question-driven prototypes have focused entry points. Existing skills gain domain vocabulary, explicit scope/cleanup checks, lean handoffs, environment retrospectives, actual CI-log investigation, optional property/mutation tests and calibrated searches for related bugs. No extra router or required tool is added.
 
 Property and mutation guidance is independently written; no Trail of Bits ShareAlike text is shipped. External reading, when relevant: https://github.com/trailofbits/skills ; https://github.com/openai/skills ; https://github.com/vercel-labs/agent-skills . Those collections are not installed or required by this plugin.
+
+## Verified cloud access and patch 0.2.1
+
+In the development ChatGPT session, the installed 0.2.0 package exposed 24 automatic entries; all 30 skills and 95 packaged Markdown documents were explicitly readable and matched the release exactly. Six manual-only skills were not listed automatically. This verifies cloud discovery/resource access for that installation, not Android UI controls or universal automatic activation. Version 0.2.1 remains a separate artifact requiring upload.
+
+The patch checks invocation metadata and manual-policy consistency, rejects empty skill directories, and reports malformed UTF-8 references as validation errors. No extra skills, hooks or background services are added.

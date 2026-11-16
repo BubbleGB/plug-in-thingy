@@ -26,6 +26,11 @@ Manual verification is accessible through “engineering verify”. A verificati
 
 For help, give the relevant entry from [the catalog](references/catalog.md), the three modes and the @/plain-language invocation options. For original benchmark results use `ponytail-gain`; for deliberate shortcut comments use `ponytail-debt`.
 
+Some hosts omit manual-only skills from automatic listings. Distinguish that
+from missing content: use supported explicit selection or package/resource
+reading before reporting a catalog skill unavailable. File access alone does
+not prove an @ picker entry or automatic invocation works.
+
 For an explicitly requested assessment of module shape, use `architecture`.
 For an explicitly requested throwaway experiment, use `prototype`; neither is a
 prerequisite for routine implementation. When asked to explain more simply,
