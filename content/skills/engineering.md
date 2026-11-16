@@ -25,3 +25,9 @@ Before claiming success, identify the evidence required, run appropriate checks,
 Manual verification is accessible through “engineering verify”. A verification-only request authorizes checks and reporting, not repairs. End with the concrete result and any material limitation, without invented savings or boilerplate disclaimers.
 
 For help, give the relevant entry from [the catalog](references/catalog.md), the three modes and the @/plain-language invocation options. For original benchmark results use `ponytail-gain`; for deliberate shortcut comments use `ponytail-debt`.
+
+For an explicitly requested assessment of module shape, use `architecture`.
+For an explicitly requested throwaway experiment, use `prototype`; neither is a
+prerequisite for routine implementation. When asked to explain more simply,
+state the outcome, the minimum useful context and the next action in plain
+language. Do not start a coding workflow or create a teaching workspace.

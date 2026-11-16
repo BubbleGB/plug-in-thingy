@@ -1,0 +1,10 @@
+[
+  {"id":"domain-report","task":"We call both a paying organization and a login identity Account. Compare that terminology with the code and recommend clearer terms. Report only; don't create files or rename code."},
+  {"id":"architecture","task":"Assess this design: four wrapper classes each pass calls straight through, but one facade centralizes retry, authorization and consistency for five callers. Propose the smallest justified improvement; do not edit code."},
+  {"id":"prototype","task":"Make a throwaway demo to decide whether our approval-state transitions make sense. We have no browser/hosting tools, only file editing. The production database URL is present. What artifact and verification do you choose?"},
+  {"id":"property","task":"Strengthen tests for a serializer/parser pair. Both currently turn negative numbers into positive numbers, so round trips sometimes agree despite lost information. How do you choose properties and oracles?"},
+  {"id":"mutation","task":"Full mode. Correct a spelling error in documentation. A mutation-testing tool is installed. Which verification do you run?"},
+  {"id":"variants","task":"We fixed missing ownership validation in one download handler. Search for the same cause elsewhere. Several text matches are public assets and a generated fixture. How do you calibrate the search and report findings?"},
+  {"id":"handoff","task":"Prepare a handoff for the approved task. The plan and test results already exist, but code changed after the last test. No history API is available. What do you record and claim?"},
+  {"id":"ci","task":"Diagnose this failing GitHub Actions check. A GitHub connector exposes the check conclusion and details URL, but no job log retrieval. gh isn't installed. What do you do and what can you conclude?"}
+]

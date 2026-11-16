@@ -17,3 +17,8 @@ An investigation-only request remains read-only. With permission to fix, follow 
 Repeated failed fixes indicate a wrong model of the problem. Re-read the evidence and architecture rather than stack guesses. If the problem is intermittent, bound observation and record timing/load conditions; do not use arbitrary sleeps as proof of correctness.
 
 Consult [root-cause tracing](references/root-cause-tracing.md) or [defense in depth](references/defense-in-depth.md) only when relevant. For test pollution, narrow the order-dependent input before adding retries. “Could not reproduce” is a valid result with documented inputs and limits; it is not proof of a fix.
+
+When the task asks whether the same cause occurs elsewhere, use
+[related-bug searches](references/bug-variants.md). Calibrate on a known failing
+instance and inspect candidate guards/callers. A text match is not a confirmed
+bug, and an empty search is not proof that every variant is gone.

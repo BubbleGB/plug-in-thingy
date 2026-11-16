@@ -164,13 +164,18 @@ class PackageTests(unittest.TestCase):
         target = self.base / 'assembled'
         build.assemble(target)
         self.assertEqual(build.validate_package(target), [])
-        self.assertEqual(len(list((target / 'skills').glob('*/SKILL.md'))), 28)
+        skill_names = {p.parent.name for p in (target / 'skills').glob('*/SKILL.md')}
+        self.assertEqual(len(skill_names), 30)
+        self.assertTrue({'architecture', 'prototype'} <= skill_names)
+        self.assertEqual((target / 'licenses/matt-pocock-MIT.txt').read_bytes(),
+                         (SCRIPT.parents[1] / 'inputs/matt-pocock/LICENSE').read_bytes())
         for name in ('ponytail-audit', 'ponytail-debt', 'ponytail-gain'):
             original = SCRIPT.parents[1] / 'inputs/ponytail/skills' / name / 'SKILL.md'
             self.assertEqual((target / 'skills' / name / 'SKILL.md').read_bytes(), original.read_bytes())
         sources = json.loads((target / 'SOURCES.json').read_text())
         originals = {p.relative_to(SCRIPT.parents[1] / 'inputs').as_posix()
-                     for p in (SCRIPT.parents[1] / 'inputs').glob('*/skills/*/SKILL.md')}
+                     for p in (SCRIPT.parents[1] / 'inputs').glob('*/skills/**/SKILL.md')}
+        self.assertEqual(len(originals), 52)
         covered = {s['path'] for entry in sources['skills'] for s in entry['sources']}
         self.assertEqual(covered, originals)
 

@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Karpathy-inspired community guidelines",
+    "repository": "https://github.com/forrestchang/andrej-karpathy-skills",
+    "author": "forrestchang (community adaptation, not Andrej Karpathy)",
+    "archive": "andrej-karpathy-skills-main.zip",
+    "archive_sha256": "384f310b37e89242dc00c4b58e1d84abf6454eeb3d24c0f9412c56e251573cd7",
+    "treatment": "Reviewed conceptual input: consequential assumptions, scoped edits and verifiable goals. Independently worded policy; no source text copied or redistributed. The supplied archive declares MIT but lacks a complete standalone notice."
+  }
+]

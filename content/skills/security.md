@@ -15,3 +15,8 @@ Check destructive paths against resolved allowed roots and real ownership; do no
 Inspect lockfiles, new dependencies, install-script policy and known advisories. Triage reachability and fix availability; do not apply forced upgrades silently. Minimize personal data, retention and access. Do not claim compliance or a complete audit from a checklist.
 
 Consult relevant [hardening patterns](references/hardening-patterns.md) and the [security checklist](references/security-checklist.md). Stay in the active task's scope; a report-only request does not authorize repairs. Lite keeps the same security floor. Report concrete findings and the boundaries/tools not verified.
+
+For a requested hunt after one confirmed defect, use the bounded
+[related-bug method](references/bug-variants.md). Check ownership and exposure
+in each actual path; public resources and fixtures are not vulnerabilities merely
+because they resemble the original code.

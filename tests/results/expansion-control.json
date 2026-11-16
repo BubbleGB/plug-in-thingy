@@ -1,0 +1,45 @@
+{
+  "variant": "0.1 control",
+  "cases": [
+    {
+      "id": "domain-report",
+      "next_action": "Keep the task read-only. Read the uses, definitions and callers of Account, distinguish the paying organization from the login identity, and report a proposed terminology mapping with code evidence. Candidate terms are Organization for the paying entity and User or Identity for authentication, subject to what the code actually represents. Do not create a glossary file or rename symbols.",
+      "limitations": "The 0.1 design and API guidance supplies scope, consumers and contract checks, but no dedicated domain terminology investigation procedure. Final names require code evidence that this simulation does not inspect."
+    },
+    {
+      "id": "architecture",
+      "next_action": "Use design to assess the trade-off and simplify guidance to inspect callers, tests and why each layer exists. Recommend removing or merging pass-through wrappers only where they have no compatibility or behavioral purpose. Keep the facade that centralizes retry, authorization and consistency for five callers unless evidence shows an equally simple safe replacement. Present the smallest justified proposal without editing code.",
+      "limitations": "No implementation or caller evidence is available here, so wrapper removal remains a conditional proposal. The facade count and responsibilities alone do not establish a performance problem."
+    },
+    {
+      "id": "prototype",
+      "next_action": "Choose a small self-contained throwaway local artifact describing approval states and allowing representative transition choices, with synthetic data and no production database connection. With file editing alone, use an inspectable transition table or paper-style scenario walkthrough as the immediate decision artifact. Record allowed, rejected and terminal transitions and manually walk representative approval/rejection paths.",
+      "limitations": "The 0.1 design skill can define behavior and acceptance criteria but has no dedicated prototype workflow. File inspection and scenario walkthrough do not demonstrate an interactive demo or runtime correctness; no browser, hosting or runtime execution is assumed."
+    },
+    {
+      "id": "property",
+      "next_action": "Read the serializer/parser contract and current test conventions. Add a focused negative-number example with an independently specified expected serialized form and parsed value, and first confirm it catches the sign-loss defect. Check semantic value preservation, including sign, across representative negative, zero and positive values and boundary inputs. Use round trips only alongside direct contract assertions so the paired implementations cannot serve as each other's only oracle. Run the existing focused runner and relevant adjacent checks after an authorized fix.",
+      "limitations": "The 0.1 test skill requires outcome assertions and a demonstrated failing regression but does not prescribe property generation or shrinking. No property-testing library, formal oracle or executed test result is established by this simulation."
+    },
+    {
+      "id": "mutation",
+      "next_action": "Make the spelling correction and inspect the exact diff and affected text. Run a relevant documentation lint, link or build check only if the edited content and project rules make it appropriate. Full mode does not require a unit-test sequence, review fan-out or mutation testing for a mechanical prose edit.",
+      "limitations": "No commands or results are claimed here. An installed mutation-testing tool does not establish relevance to a documentation spelling correction."
+    },
+    {
+      "id": "variants",
+      "next_action": "Start from the fixed handler's actual trust boundary and missing ownership check. Search related download entry points and shared authorization code, then trace each candidate's callers and data access to determine whether another user can fetch a protected object. Compare protected and public routes. Report confirmed variants with evidence and distinguish unverified candidates. Exclude public assets from the ownership defect when their public contract is established; treat the generated fixture as a lead to its source rather than an executable handler finding.",
+      "limitations": "The 0.1 debug skill supports tracing shared causes and affected callers but has no dedicated variant-search calibration or stopping rule. Text matches alone prove neither exploitability nor full search coverage; generated or public classifications still need evidence."
+    },
+    {
+      "id": "handoff",
+      "next_action": "Reuse the approved plan and existing artifacts. Record objective, scope, approvals, decisions, changed paths and current repository state; attach the exact prior verification command/result and identify that it predates the latest code changes. Rerun the relevant checks against the final state when available and record their complete outcome, or leave final-state verification explicitly pending with a concrete next step. Record blockers and risks without secrets.",
+      "limitations": "Prior passing results do not verify the changed state. Without a history API, rely on available artifacts and repository evidence and mark missing approval or chronological details as unknown; do not invent transcript access or persistent storage."
+    },
+    {
+      "id": "ci",
+      "next_action": "Use the available connector to record the failing check conclusion and details URL. Inspect the relevant workflow and project command locally if available, then attempt a meaningful local reproduction with the existing toolchain. State that hosted job logs are unavailable and request the relevant redacted failing log excerpt or usable log access if it is required to distinguish causes. Report any local result separately from the hosted conclusion.",
+      "limitations": "The connector exposes no job log retrieval and gh is absent; do not invent log access or silently install a replacement. The conclusion and URL establish check failure but not its root cause, and a local pass cannot establish hosted CI success."
+    }
+  ]
+}

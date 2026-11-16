@@ -20,3 +20,9 @@ Prefer real implementations and assertions on outcomes. Mock only real external 
 For behavior-preserving refactors, establish existing behavior before changing it. For docs/configuration/mechanical changes, use inspection, parsing, schema validation, build or a focused smoke check as appropriate; do not invent logic tests just to satisfy ceremony. Never delete user work to recreate a test-first sequence.
 
 Consult [test quality](references/writing-good-tests.md) and [testing patterns](references/testing-patterns.md) for relevant cases. UI claims need an actual browser/runtime check when available; otherwise report that limit. Never disable tests or lower thresholds to claim success.
+
+For codecs, parsers, normalization or similar input domains, consider the
+[deeper test methods](references/advanced-testing.md) when they answer a concrete
+coverage question. A round trip can share the implementation's bug: include an
+independent oracle or explicit specification examples. Mutation checks are an
+optional bounded assessment, never default verification for prose or trivial edits.

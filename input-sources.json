@@ -33,5 +33,26 @@
     "skipped_symlinks": [],
     "differences_from_audit": [],
     "audited_matching_commit": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846"
+  },
+  {
+    "project": "matt-pocock",
+    "archive": "skills-main.zip",
+    "sha256": "a335a6e98f95ad60a7c8a8a9799362c89b5f04f06ec1ce49a3fc67ff3c87a3d4",
+    "version": "1.3.2",
+    "repository": "https://github.com/mattpocock/skills",
+    "extraction": "selected regular source files only",
+    "selected_files": [
+      "LICENSE",
+      "README.md",
+      "package.json",
+      "skills/engineering/domain-modeling/SKILL.md",
+      "skills/engineering/domain-modeling/GLOSSARY-FORMAT.md",
+      "skills/engineering/domain-modeling/ADR-FORMAT.md",
+      "skills/engineering/codebase-design/SKILL.md",
+      "skills/engineering/prototype/SKILL.md",
+      "skills/engineering/retro/SKILL.md",
+      "skills/productivity/handoff/SKILL.md",
+      "skills/productivity/wait-what/SKILL.md"
+    ]
   }
 ]

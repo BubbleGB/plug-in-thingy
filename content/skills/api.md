@@ -13,3 +13,8 @@ Validate at trust boundaries, separate external inputs from trusted domain state
 For pagination, define ordering and continuation under concurrent writes. For retried mutations, define idempotency scope, storage, duplicate/in-flight handling and failure recovery; a header alone does not make a write idempotent. Keep PATCH semantics explicit. Avoid exposing storage models or adding brand types/wrappers unless they prevent a concrete mistake.
 
 Use [contract and API patterns](references/technical-details.md) only for the relevant interface. Verify representative consumers, error cases and compatibility, using integration/contract tests as appropriate. Report any untested external consumers instead of claiming universal compatibility.
+
+Prefer interfaces that hide useful behavior and keep changes local to one place.
+Count what callers must know, including invariants and failure modes. Keep a
+facade that centralizes real policy; avoid new pass-through layers without a
+demonstrated consumer benefit. Do not force imported vocabulary on the project.

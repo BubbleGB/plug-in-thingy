@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "prompt": "Use Unified Engineering help: explain the modes and how to invoke a skill."
+  },
+  {
+    "id": 2,
+    "prompt": "I have a vague idea for a team scheduling app. Help me work out the requirements and compare approaches before coding."
+  },
+  {
+    "id": 3,
+    "prompt": "The requirements are agreed. Break this multi-component feature into ordered tasks with acceptance criteria."
+  },
+  {
+    "id": 4,
+    "prompt": "Execute this approved multi-file implementation plan. The interfaces and acceptance criteria are settled."
+  },
+  {
+    "id": 5,
+    "prompt": "This stack trace appeared after yesterday's change. Investigate why the function now throws."
+  },
+  {
+    "id": 6,
+    "prompt": "Add meaningful regression tests for this parser, including invalid and empty input."
+  },
+  {
+    "id": 7,
+    "prompt": "Review this pull request diff only and report concrete problems before merge."
+  },
+  {
+    "id": 8,
+    "prompt": "Audit the whole repository for bugs, security holes, real load failures and unnecessary code."
+  },
+  {
+    "id": 9,
+    "prompt": "Simplify this working function and reduce nesting while keeping its exact behavior."
+  },
+  {
+    "id": 10,
+    "prompt": "Write a commit message and changelog entry for these completed changes."
+  },
+  {
+    "id": 11,
+    "prompt": "Design the public API contract, pagination behavior and consistent errors for this endpoint."
+  },
+  {
+    "id": 12,
+    "prompt": "Verify this browser flow by inspecting runtime interactions, console errors and keyboard focus."
+  },
+  {
+    "id": 13,
+    "prompt": "Repair this GitHub Actions pipeline and its dependency caching and quality gates."
+  },
+  {
+    "id": 14,
+    "prompt": "Plan a production database expand/contract migration that keeps old and new callers working."
+  },
+  {
+    "id": 15,
+    "prompt": "Write an architecture decision record and repair the stale API documentation."
+  },
+  {
+    "id": 16,
+    "prompt": "Build this responsive accessible UI component using the existing design system."
+  },
+  {
+    "id": 17,
+    "prompt": "Add correlated structured logs and useful latency metrics to the queue worker."
+  },
+  {
+    "id": 18,
+    "prompt": "Profile this slow query path under representative load and identify the bottleneck before changing it."
+  },
+  {
+    "id": 19,
+    "prompt": "Assess this upload handler's trust boundaries, authorization and path traversal exposure."
+  },
+  {
+    "id": 20,
+    "prompt": "Prepare a durable handoff of this interrupted agent task and trim irrelevant context."
+  },
+  {
+    "id": 21,
+    "prompt": "Set up project quality standards and a coverage ratchet using our existing checkers."
+  },
+  {
+    "id": 22,
+    "prompt": "Verify this version-sensitive framework API against authoritative documentation before implementing it."
+  },
+  {
+    "id": 23,
+    "prompt": "Use the delegate skill: split the approved independent tasks among parallel agents if supported."
+  },
+  {
+    "id": 24,
+    "prompt": "Use the challenge skill for a fresh-context adversarial review of this design assumption."
+  },
+  {
+    "id": 25,
+    "prompt": "Use skill-authoring to create and evaluate a reusable agent skill for this recurring problem."
+  },
+  {
+    "id": 26,
+    "prompt": "Use workflow-diagnostics to explain why this agent session kept repeating already completed work."
+  },
+  {
+    "id": 27,
+    "prompt": "Use ponytail-debt to list all shortcut comments and their upgrade triggers."
+  },
+  {
+    "id": 28,
+    "prompt": "Use ponytail-gain to show the published upstream Ponytail benchmark figures."
+  },
+  {
+    "id": 29,
+    "prompt": "Hello, how are you?"
+  },
+  {
+    "id": 30,
+    "prompt": "Explain what this already working function does. Do not edit it or start a development workflow."
+  },
+  {
+    "id": 31,
+    "prompt": "Replace the single typo teh with the in README. No other changes."
+  },
+  {
+    "id": 32,
+    "prompt": "What is a hash table? Give a short explanation, no code changes."
+  },
+  {
+    "id": 33,
+    "prompt": "Assess these module boundaries and wrapper interfaces for testability and unnecessary indirection. Report proposed architecture improvements only."
+  },
+  {
+    "id": 34,
+    "prompt": "Create a throwaway in-memory demo to evaluate these state transitions before deciding the production design."
+  },
+  {
+    "id": 35,
+    "prompt": "Fix exactly this README typo. Do not assess architecture or create a prototype."
+  }
+]

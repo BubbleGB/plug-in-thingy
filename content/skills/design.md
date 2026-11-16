@@ -16,3 +16,8 @@ Read available requirements, project instructions and related code before asking
 Manual procedures: “interview me” explores missing intent; “refine this idea” explores variants before converging; “write a spec” captures testable behavior. They are procedures within this workflow, not three compulsory phases. Avoid numerical confidence claims and an extended interview for a complete brief.
 
 For larger systems, identify independently testable capabilities, dependencies and deferred scope. Preserve necessary security/privacy/accessibility requirements. Hand the agreed outcome to `plan` only when decomposition would help; the design is not a transcript of implementation.
+
+When business terms collide, use [shared vocabulary](references/domain-vocabulary.md)
+to resolve the actual concepts against code. Read existing terms first; do not
+create a glossary or ADR for an explanation-only request. A cheap prototype can
+settle a concrete uncertainty when requested; it is not another compulsory phase.

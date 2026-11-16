@@ -13,3 +13,9 @@ Resolve apparent conflicts using actual instruction precedence, not whichever te
 For an authorized handoff, record: intended behavior, constraints and effective preferences; decisions/approvals with context; changes already made; verification command/result and code state; remaining tasks, blockers and risks. Read actual Git status and artifacts on resume. Do not invent transcript access or claim the handoff is permanently stored unless it was saved through a supported mechanism.
 
 See [context selection patterns](references/technical-details.md). Use existing project rules files only when asked to create/update durable guidance. Never paste all original routers into AGENTS.md or create always-on startup machinery. Keep secrets, unrelated conversation and unnecessary tool output out of handoffs.
+
+Link existing plans, decisions, commits and test logs instead of duplicating
+them. Associate approvals with their exact scope and verification with its code
+state; changed code makes older results stale. Include the next concrete action
+and effective preferences. Save only to an authorized accessible location, and
+do not promise another session can read temporary files or unavailable history.

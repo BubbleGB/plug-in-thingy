@@ -1,6 +1,6 @@
-# Unified Engineering 0.1.0
+# Unified Engineering 0.2.0
 
-One skills-only engineering plugin combining Ponytail's simplicity, Superpowers' development methods and Addy Osmani's specialist engineering expertise. This is an independent adaptation, not an official release or endorsement by those projects.
+One skills-only engineering plugin combining Ponytail's simplicity, Superpowers' development methods, Addy Osmani's specialist engineering expertise and selected Matt Pocock methods, with refinements informed by the Karpathy-inspired community guidelines. This is an independent adaptation, not an official release or endorsement by those projects.
 
 ## Use it
 
@@ -37,13 +37,13 @@ Allowed values: mode=lite/full/ultra; workflow=auto/manual; specialists=auto/man
 
 ## What is included
 
-28 entry points. Core: engineering, design, plan, implement, debug, test, review, simplify, ship, ponytail-audit. Specialists: api, browser, ci, migrate, docs, frontend, observe, performance, security, context, standards, sources. Explicit advanced/reporting: delegate, challenge, skill-authoring, workflow-diagnostics, ponytail-debt, ponytail-gain.
+30 entry points. Core: engineering, design, plan, implement, debug, test, review, simplify, ship, ponytail-audit. Focused additions: architecture and prototype. Specialists: api, browser, ci, migrate, docs, frontend, observe, performance, security, context, standards, sources. Explicit advanced/reporting: delegate, challenge, skill-authoring, workflow-diagnostics, ponytail-debt, ponytail-gain.
 
 One workflow owns the task; specialists contribute relevant checks without restarting planning or review. Verification is a common completion contract and is also available through “engineering verify”. `ponytail-audit`, `ponytail-debt` and `ponytail-gain` retain their original skill-file bytes. Gain displays upstream Ponytail benchmark results, not measured performance of this plugin.
 
 ## Install and test on ChatGPT / Android
 
-Use the single plugin upload ZIP, **unified-engineering-0.1.0.zip**. The separate **source ZIP is for maintenance**, not plugin upload. The upload ZIP has one plugin root, a portable manifest and one Codex compatibility overlay. It contains no marketplace catalog or nested original plugins.
+Use the single plugin upload ZIP, **unified-engineering-0.2.0.zip**. The separate **source ZIP is for maintenance**, not plugin upload. The upload ZIP has one plugin root, a portable manifest and one Codex compatibility overlay. It contains no marketplace catalog or nested original plugins.
 
 Use the actual plugin upload/import flow available to your account. Android/account-specific plugin-management controls may vary; no CLI, Android terminal, Node installation or local MCP server is needed for the plugin's instruction-only core. If the upload is rejected, retain the exact error and archive version; do not turn this into a marketplace archive blindly.
 
@@ -67,4 +67,10 @@ No lifecycle hooks, statusline, hidden telemetry, task-cost webhook, transcript 
 
 ## Licence and origin
 
-MIT. Retain LICENSE, the three original notices in licenses/, ATTRIBUTION.md and SOURCES.json when redistributing. Sources are the user's supplied Ponytail 5.3.3, Superpowers 7.0.2 and Agent Skills 0.6.16 archives. The source map records archive hashes, original skill hashes, consolidation destinations and packaged reference adaptations. No upstream update is downloaded at runtime.
+MIT. Retain LICENSE, the four original notices in licenses/, ATTRIBUTION.md and SOURCES.json when redistributing. Copied/adapted sources are the user's supplied Ponytail 5.3.3, Superpowers 7.0.2, Agent Skills 0.6.16 and selected Matt Pocock 1.3.2 files. The Karpathy-inspired community collection informs independently worded policy; no text from it is redistributed. The source map records archive hashes, original skill hashes, consolidation destinations and packaged reference adaptations. No upstream update is downloaded at runtime.
+
+## Added in 0.2
+
+Architecture assessments and question-driven prototypes have focused entry points. Existing skills gain domain vocabulary, explicit scope/cleanup checks, lean handoffs, environment retrospectives, actual CI-log investigation, optional property/mutation tests and calibrated searches for related bugs. No extra router or required tool is added.
+
+Property and mutation guidance is independently written; no Trail of Bits ShareAlike text is shipped. External reading, when relevant: https://github.com/trailofbits/skills ; https://github.com/openai/skills ; https://github.com/vercel-labs/agent-skills . Those collections are not installed or required by this plugin.

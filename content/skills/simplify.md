@@ -17,3 +17,8 @@ Respect `simplify-ignore-start`/`simplify-ignore-end` markers and project-protec
 Do not refactor adjacent systems or add a new abstraction just to make one function shorter. Split by responsibility, not a line-count quota. Report what became easier to understand and any material limits to equivalence checking.
 
 See [language patterns](references/technical-details.md) for relevant examples. This skill retains Addy Osmani's acknowledgment of the [Anthropic Code Simplifier inspiration](https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md).
+
+Before removing an abstraction, ask whether its complexity would move back into
+callers. Keep useful ownership, retry and consistency policy centralized. An
+architectural assessment is a separate requested scope, not permission to expand
+this cleanup into a codebase redesign.

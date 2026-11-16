@@ -245,7 +245,7 @@ def assemble(destination):
     catalog = json.loads((content / 'catalog.json').read_text())
     manifest = json.loads((content / 'plugin.json').read_text())
     interface = json.loads((content / 'interface.json').read_text())
-    sources = {'format': 1, 'archives': json.loads((PROJECT / 'input-sources.json').read_text()), 'skills': [], 'references': []}
+    sources = {'format': 1, 'archives': json.loads((PROJECT / 'input-sources.json').read_text()), 'influences': json.loads((content / 'influences.json').read_text()), 'skills': [], 'references': []}
 
     def output(path, text):
         file = destination / path
@@ -263,7 +263,7 @@ def assemble(destination):
     overlay.update(skills='./skills/', interface=interface)
     output('.codex-plugin/plugin.json', json.dumps(overlay, indent=2) + '\n')
     output('README.md', (content / 'README.md').read_text())
-    projects = [('ponytail', 'DietrichGebert', 2026), ('superpowers', 'Jesse Vincent', 2025), ('agent-skills', 'Addy Osmani', 2025)]
+    projects = [('ponytail', 'DietrichGebert', 2026), ('superpowers', 'Jesse Vincent', 2025), ('agent-skills', 'Addy Osmani', 2025), ('matt-pocock', 'Matt Pocock', 2026)]
     notices = []
     for project, author, year in projects:
         text = (inputs / project / 'LICENSE').read_text()
@@ -271,13 +271,13 @@ def assemble(destination):
         notices.append(f'Copyright (c) {year} {author}')
     license_text = (inputs / 'ponytail/LICENSE').read_text()
     output('LICENSE', license_text.replace('Copyright (c) 2026 DietrichGebert', '\n'.join(notices) + '\nCopyright (c) 2026 Unified Engineering contributors'))
-    output('ATTRIBUTION.md', '# Attribution\n\nIndependent MIT-licensed adaptation. No upstream endorsement is implied.\n\n' + '\n'.join(f'- {p}: {a}; original complete notice in licenses/{p}-MIT.txt.' for p, a, _ in projects) + '\n\nPonytail provides the simplicity philosophy and reporting tools. Superpowers provides development workflow methods. Addy Osmani provides specialist engineering patterns and workflow refinements. Adapted skill bodies coordinate their overlapping guidance. SOURCES.json maps every canonical original skill to its unified destination and hashes each copied reference.\n\nThe simplification skill retains Addy Osmani\'s acknowledgment of Anthropic\'s Code Simplifier inspiration: https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md . Third-party links do not imply copied code or endorsement.\n')
+    output('ATTRIBUTION.md', '# Attribution\n\nIndependent MIT-licensed adaptation. No upstream endorsement is implied.\n\n' + '\n'.join(f'- {p}: {a}; original complete notice in licenses/{p}-MIT.txt.' for p, a, _ in projects) + '\n\nPonytail provides the simplicity philosophy and reporting tools. Superpowers provides development workflow methods. Addy Osmani provides specialist engineering patterns and workflow refinements. Adapted skill bodies coordinate their overlapping guidance. SOURCES.json maps every canonical original skill to its unified destination and hashes each copied reference.\n\nThe simplification skill retains Addy Osmani\'s acknowledgment of Anthropic\'s Code Simplifier inspiration: https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md . Third-party links do not imply copied code or endorsement.\n\nMatt Pocock contributes selected domain-modeling, interface-design, prototyping, handoff and retrospective methods. His original MIT notice is retained in licenses/matt-pocock-MIT.txt.\n\nThe forrestchang community collection inspired by Karpathy was reviewed as conceptual input for independently worded policy refinements. It is not authored by Karpathy; no source text from that collection is redistributed. See SOURCES.json influences for the reviewed archive hash and notice limitation.\n\nProperty-testing, mutation and related-bug guidance is independently written for this plugin. No Trail of Bits ShareAlike text or OpenAI/Vercel skill code is bundled.\n')
 
     common = (content / 'common.md').read_text().strip()
     preferences = (content / 'preferences.md').read_text()
     names = {entry['name'] for entry in catalog}
-    if len(names) != len(catalog) or len(names) != 28:
-        raise ValueError('expected 28 unique canonical skills')
+    if len(names) != len(catalog) or any(not NAME.fullmatch(name) for name in names):
+        raise ValueError('canonical skill names must be unique kebab-case identifiers')
     catalog_note = '# Skill catalog\n\nOne workflow owns the task; specialists contribute checks. Names are manual invocation intents, not filesystem dependencies.\n\n' + '\n'.join(f'- `{e["name"]}`' + (' — explicit request only.' if e.get('manual') else ' — relevant task matching.') for e in catalog) + '\n\nUse Lite/Full/Ultra preferences without lowering correctness. Use @ selection where supported, or plain language. Native matching/manual-only enforcement must be tested in the target host.\n'
     for entry in catalog:
         name = entry['name']; skill_dir = Path('skills') / name
@@ -368,7 +368,7 @@ def assemble(destination):
                 text = (inputs / asset).read_text().replace('](../agentic/README.md)', '](https://github.com/DietrichGebert/ponytail/blob/96608e078b2d5ea607c5c3b8b5a54d1c1fba6846/benchmarks/agentic/README.md)')
                 target.write_text(text)
             sources['references'].append({**record(asset), 'destination': (skill_dir / (Path('README.md') if asset == 'ponytail/README.md' else Path(asset).relative_to('ponytail'))).as_posix(), 'changes': 'benchmark source note with pinned upstream link' if asset == 'ponytail/README.md' else 'harness-documentation link pinned upstream; benchmark numbers/text otherwise unchanged'})
-    originals = {p.relative_to(inputs).as_posix() for p in inputs.glob('*/skills/*/SKILL.md')}
+    originals = {p.relative_to(inputs).as_posix() for p in inputs.glob('*/skills/**/SKILL.md')}
     covered = {source['path'] for entry in sources['skills'] for source in entry['sources']}
     if originals != covered:
         raise ValueError('source mapping incomplete: ' + repr(originals ^ covered))

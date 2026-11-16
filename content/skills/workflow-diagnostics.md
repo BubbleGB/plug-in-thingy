@@ -15,3 +15,10 @@ Compare against the effective task and policy, including existing approvals, cap
 Report concrete findings with file/line or turn/tool references, likely cause, uncertainty and a bounded correction. If evidence is missing, state what cannot be established and the smallest next test.
 
 Prepare an upstream bug-report draft only when requested. Redact secrets, personal data and unrelated content. Do not upload transcripts, publish an issue or send a message without explicit authorization for the exact action. No hidden session collection or telemetry is supplied.
+
+For a requested retrospective, recommend improvements to navigation, existing
+check commands, misleading instructions and unnecessarily costly tool use. Check
+whether a guardrail already exists before proposing another. Mechanical mistakes
+may deserve an existing linter/CI check; judgment calls may deserve a concise
+rule. A report-only retrospective does not authorize installing tools, editing
+global instructions or creating hooks.

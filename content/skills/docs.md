@@ -15,3 +15,8 @@ For user/API instructions, include useful inputs, output/error behavior and prer
 For drift, map changed public behavior/configuration to its documentation and identify stale or conflicting instructions. Add a lightweight existing CI check only when requested or necessary for this scope, not a new doc framework. See [documentation patterns](references/technical-details.md).
 
 Finish with the concrete documentation change and what was checked. An ADR, README or generated API reference is not runtime evidence by itself. Plain explanations need no development lifecycle or edits unless requested.
+
+For domain terminology, apply [shared vocabulary](references/domain-vocabulary.md).
+Record the resolved meaning, not a pile of implementation notes. Keep existing
+context boundaries and useful project terms; a naming discussion alone does not
+authorize a code rename or new persistent documents.
