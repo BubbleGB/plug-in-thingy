@@ -1,0 +1,45 @@
+{
+  "variant": "0.2 guided",
+  "cases": [
+    {
+      "id": "domain-report",
+      "next_action": "Read any existing glossary/context map and trace Account usages through billing/organization and authentication code, comparing rights, lifecycle and examples. Report proposed terms such as Organization for the paying entity and Login identity/User for the authenticating principal, marking the terms provisional until code and domain meaning support them; preserve deliberate bounded-context differences. Include concise proposed glossary entries in the report only.",
+      "limitations": "Scenario gives no actual code or glossary, so no terminology comparison has been observed and business semantics cannot be invented. Report-only scope excludes creating glossary/ADR files and renaming code."
+    },
+    {
+      "id": "architecture",
+      "next_action": "Trace one representative call and its tests through the wrappers and facade. Apply the deletion test: propose bypassing or merging only pass-through wrappers whose removal actually reduces caller knowledge, after checking compatibility and real external seams; retain the facade that centralizes retry, authorization and consistency for five callers. Present affected consumers, benefit/cost and a behavior-verification path, or recommend no change if benefit is speculative.",
+      "limitations": "Class count and pass-through appearance alone do not establish redundancy. Actual callers, invariants, error/order behavior and tests are unavailable in the scenario, so improvement is a conditional report, with no edits or automatic test deletion."
+    },
+    {
+      "id": "prototype",
+      "next_action": "Define the decision question and list expected valid/invalid approval transitions, then create a clearly labeled standalone HTML prototype using synthetic in-memory state, visible current state and a transition log, with representative success and rejected-transition controls. Since only file editing exists, supply local-browser opening instructions and a manual transition checklist; inspect the artifact against the transition table without claiming it executed.",
+      "limitations": "Do not use the production database URL or copy secrets into the demo; their presence gives no authorization. No runtime/browser/hosting observation is possible, so interaction, accessibility, persistence, device compatibility and a preview URL are unverified. Prototype code is not automatically promoted to production."
+    },
+    {
+      "id": "property",
+      "next_action": "State the numeric/sign preservation specification and add independent expected-value examples for each direction: parsing a literal negative value must yield that negative value, and serializing a negative number must produce the specified negative representation. Add generated or deterministic boundary cases spanning negatives, zero, positives, empty/invalid input as relevant, with explicit preconditions and a reproducible seed/shrunk failure when supported. Use round trips only as a supplementary invariant comparing directly with the original input, not as the sole oracle or expectations derived from the paired implementation.",
+      "limitations": "The actual format, accepted domain and available runner are unspecified; choose installed tools or a small boundary table rather than assume a new property library. A shared-bug pair, normalization or constant result can satisfy weak round-trip checks; inspect whether a counterexample indicates a wrong property before changing code. No tests ran in this simulation."
+    },
+    {
+      "id": "mutation",
+      "next_action": "Correct only the authorized documentation spelling and inspect the resulting diff to confirm the intended word and no unrelated changes; use an existing relevant documentation/spelling check if appropriate. Do not run mutation testing for this prose-only change.",
+      "limitations": "Full mode and an installed mutation tool do not make mutation checks appropriate. No logic change exists to assess and no runtime correctness claim follows from a documentation inspection; this scenario is a proposed verification choice only."
+    },
+    {
+      "id": "variants",
+      "next_action": "Define the missing invariant as authorization for the requested private resource, then calibrate an rg search against the known failing instance via its recorded pre-fix diff or fixture. Generalize one name/API shape at a time, reading candidate callers, guards and exposure. Report confirmed missing-ownership paths with triggers and minimal proposed fixes, and separately classify public assets, generated fixtures, already guarded paths and unresolved candidates. State search scope and stop when widening only adds noise.",
+      "limitations": "Text resemblance alone does not establish a vulnerability; public assets and generated fixtures are not confirmed variants. No current-code matches after a fix do not establish calibrated search or exhaustive safety. Search/report scope does not authorize additional repairs, analyzer installs or recursive agent audits."
+    },
+    {
+      "id": "handoff",
+      "next_action": "Inspect current repository status and available plan/test artifacts; link those existing records rather than recreating them. Record approved scope and evidence for approval, intended behavior, effective preferences, decisions, changes/current code state, exact prior verification command/result and the state it tested, remaining risks and the next concrete action: rerun relevant checks on the changed final code. Save only to an authorized accessible handoff location if requested, with no secrets or irrelevant transcript.",
+      "limitations": "The earlier results are stale for the changed code and cannot substantiate current passing status. No history API means unavailable conversation context/approvals must be marked unknown rather than reconstructed. Do not claim durable persistence or future-session access to a temporary artifact, and do not restart an existing approved plan."
+    },
+    {
+      "id": "ci",
+      "next_action": "Use the available connector to identify the requested repository/PR check and record its observed conclusion/details URL. Inspect local workflow definitions, lockfile, tool versions and relevant project commands, then perform useful supported local checks if execution is available. Report that hosted job logs cannot be retrieved with current capabilities and request the failing command, redacted error log and runner environment to distinguish causes.",
+      "limitations": "A conclusion and details URL are not job logs and cannot establish a root cause. gh is absent and no installation is required or silently performed; do not infer another provider failure from the URL. Local validation, if run, is separate evidence from the hosted run, and no fix or hosted success has been observed in this simulation."
+    }
+  ]
+}

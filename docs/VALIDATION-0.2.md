@@ -33,8 +33,22 @@ OpenAI Apache or Vercel skill content has been copied into this release.
 - New application and description-selection exercises are offline model checks,
   not actual native skill activation. Results/limitations are recorded alongside
   their raw JSON under tests/results.
-- Independent review and clean-source rebuild results are recorded below when
-  completed. These evidence steps never stand in for target-runtime acceptance.
+- The new offline description-selection exercise matched 30 intended primary
+  skills and five negative cases (35/35). One control and one guided evaluator
+  each answered eight application scenarios. The baseline was already generally
+  sound; the revised guidance made prototype, vocabulary, oracle and search
+  procedures explicit. This is limited text-level evidence, not a measured gain
+  in deployed coding outcomes or native routing reliability.
+- The official portable manifest schema passed. An independent YAML parser
+  accepted all 30 skill headers and invocation-policy files. The build still
+  requires only Python's standard library.
+- A fresh independent reviewer found no substantiated Critical/Important/Minor
+  issue. It checked the actual ZIP's CRC, all 30 bodies, local references,
+  manifest, README, notices, influence metadata and recorded source hashes.
+  Native routing/Android acceptance and legal conclusions were outside that
+  review. No files were modified by the reviewer.
+- Clean-source rebuild results are delivered beside the archives. These evidence
+  steps never stand in for target-runtime acceptance.
 
 ## Practical acceptance still required
 

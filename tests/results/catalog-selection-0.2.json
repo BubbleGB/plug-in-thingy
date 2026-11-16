@@ -1,0 +1,180 @@
+{
+  "kind": "offline description selection",
+  "selections": [
+    {
+      "id": 1,
+      "primary": "engineering",
+      "reason": "Explicit Unified Engineering help and invocation request."
+    },
+    {
+      "id": 2,
+      "primary": "design",
+      "reason": "Consequential requirements remain open and approaches need comparison."
+    },
+    {
+      "id": 3,
+      "primary": "plan",
+      "reason": "Agreed requirements need ordered tasks and acceptance criteria."
+    },
+    {
+      "id": 4,
+      "primary": "implement",
+      "reason": "Explicit execution of a settled approved multi-file plan."
+    },
+    {
+      "id": 5,
+      "primary": "debug",
+      "reason": "An observed exception and stack trace require investigation."
+    },
+    {
+      "id": 6,
+      "primary": "test",
+      "reason": "Explicit request for meaningful parser regression tests."
+    },
+    {
+      "id": 7,
+      "primary": "review",
+      "reason": "Explicit pull request diff review, not a whole-repository audit."
+    },
+    {
+      "id": 8,
+      "primary": "ponytail-audit",
+      "reason": "Explicit whole-repository audit for bugs, security, load failures and bloat."
+    },
+    {
+      "id": 9,
+      "primary": "simplify",
+      "reason": "Working code needs simplification with identical behavior."
+    },
+    {
+      "id": 10,
+      "primary": "ship",
+      "reason": "Preparing a commit message and changelog for completed changes."
+    },
+    {
+      "id": 11,
+      "primary": "api",
+      "reason": "Public API contract, pagination and error semantics match directly."
+    },
+    {
+      "id": 12,
+      "primary": "browser",
+      "reason": "Runtime browser interactions, console and accessibility verification."
+    },
+    {
+      "id": 13,
+      "primary": "ci",
+      "reason": "CI pipeline, dependency caches and quality gates match directly."
+    },
+    {
+      "id": 14,
+      "primary": "migrate",
+      "reason": "Production schema migration requires compatibility and staged transition."
+    },
+    {
+      "id": 15,
+      "primary": "docs",
+      "reason": "Substantive architecture decision and API documentation repair."
+    },
+    {
+      "id": 16,
+      "primary": "frontend",
+      "reason": "Building a responsive accessible UI component."
+    },
+    {
+      "id": 17,
+      "primary": "observe",
+      "reason": "Structured logs, correlation and latency metrics match directly."
+    },
+    {
+      "id": 18,
+      "primary": "performance",
+      "reason": "Explicit representative-load profiling before optimization."
+    },
+    {
+      "id": 19,
+      "primary": "security",
+      "reason": "Upload trust boundaries, authorization and traversal risk need assessment."
+    },
+    {
+      "id": 20,
+      "primary": "context",
+      "reason": "Durable handoff and trimming context match directly."
+    },
+    {
+      "id": 21,
+      "primary": "standards",
+      "reason": "Explicit project quality standards and coverage ratchet request."
+    },
+    {
+      "id": 22,
+      "primary": "sources",
+      "reason": "Version-sensitive API behavior requires authoritative documentation."
+    },
+    {
+      "id": 23,
+      "primary": "delegate",
+      "reason": "Explicitly invokes delegate and asks for parallel agents."
+    },
+    {
+      "id": 24,
+      "primary": "challenge",
+      "reason": "Explicitly invokes challenge for fresh-context adversarial review."
+    },
+    {
+      "id": 25,
+      "primary": "skill-authoring",
+      "reason": "Explicit reusable agent skill creation and evaluation request."
+    },
+    {
+      "id": 26,
+      "primary": "workflow-diagnostics",
+      "reason": "Explicit session repetition diagnosis matches workflow-diagnostics."
+    },
+    {
+      "id": 27,
+      "primary": "ponytail-debt",
+      "reason": "Explicit debt-ledger skill invocation."
+    },
+    {
+      "id": 28,
+      "primary": "ponytail-gain",
+      "reason": "Explicit published Ponytail benchmark figures request."
+    },
+    {
+      "id": 29,
+      "primary": null,
+      "reason": "Greeting has no engineering workflow intent."
+    },
+    {
+      "id": 30,
+      "primary": null,
+      "reason": "Code explanation alone is explicitly outside engineering and requests no workflow."
+    },
+    {
+      "id": 31,
+      "primary": null,
+      "reason": "Single-word documentation correction is a mechanical edit excluded by docs and does not warrant a workflow."
+    },
+    {
+      "id": 32,
+      "primary": null,
+      "reason": "Conceptual explanation requests no implementation or workflow."
+    },
+    {
+      "id": 33,
+      "primary": "architecture",
+      "reason": "Module boundaries, wrappers, testability and indirection match architecture directly."
+    },
+    {
+      "id": 34,
+      "primary": "prototype",
+      "reason": "Explicit throwaway in-memory state experiment before production design."
+    },
+    {
+      "id": 35,
+      "primary": null,
+      "reason": "Exact README typo correction explicitly excludes architecture and prototype; no substantive documentation workflow applies."
+    }
+  ]
+}

@@ -29,11 +29,11 @@ from a real defect; all new source/reference paths must stay self-contained.
 
 ## Tasks
 
-- [ ] 1. Add failing release tests: 30 entries including architecture/prototype,
+- [x] 1. Add failing release tests: 30 entries including architecture/prototype,
   Matt notice/source preservation, nested source-map coverage. Extract selected
   regular Matt source files; extend assembler source/notice handling minimally.
-- [ ] 2. Refine common/existing skills and add two focused skills plus technical
+- [x] 2. Refine common/existing skills and add two focused skills plus technical
   references. Add holdout application/discovery prompts; test against prior
   guidance and revised guidance without claiming native routing evidence.
-- [ ] 3. Independent review, required fixes, full checks, clean source ZIP rebuild,
+- [x] 3. Independent review, required fixes, full checks, clean source ZIP rebuild,
   updated validation notes and release archives. Keep 0.1.0 intact; no installs.
