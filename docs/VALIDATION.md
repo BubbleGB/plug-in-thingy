@@ -33,6 +33,10 @@ ChatGPT/Android runtime certification.
   checking, not the actual native skill router.
 - Fresh independent release review; all three demonstrated validator defects
   reproduced by regression fixtures and fixed. See REVIEW.md.
+- The downloadable source bundle was extracted into a clean temporary folder:
+  all 20 tests passed there, and its build reproduced the delivered plugin ZIP
+  byte-for-byte. The extracted CLI also inspected the delivery ZIP successfully.
+  Raw extracted-source test output is in FINAL-TEST-OUTPUT.txt.
 
 ## Required target-runtime acceptance
 

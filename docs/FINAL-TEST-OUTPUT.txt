@@ -1,0 +1,25 @@
+test_archive_symlink_rejected (test_build.PackageTests.test_archive_symlink_rejected) ... ok
+test_archive_traversal_and_duplicates_rejected (test_build.PackageTests.test_archive_traversal_and_duplicates_rejected) ... ok
+test_assembly_preserves_sources_and_closes_all_references (test_build.PackageTests.test_assembly_preserves_sources_and_closes_all_references) ... ok
+test_bad_build_does_not_replace_previous_archive (test_build.PackageTests.test_bad_build_does_not_replace_previous_archive) ... ok
+test_checks_nested_reference_and_anchor (test_build.PackageTests.test_checks_nested_reference_and_anchor) ... ok
+test_code_example_links_are_not_dependencies (test_build.PackageTests.test_code_example_links_are_not_dependencies) ... ok
+test_detects_frontmatter_mismatch (test_build.PackageTests.test_detects_frontmatter_mismatch) ... ok
+test_deterministic_rootless_archive (test_build.PackageTests.test_deterministic_rootless_archive) ... ok
+test_frontmatter_supports_the_documented_string_subset (test_build.PackageTests.test_frontmatter_supports_the_documented_string_subset) ... ok
+test_invalid_yaml_description_does_not_replace_good_artifact (test_build.PackageTests.test_invalid_yaml_description_does_not_replace_good_artifact) ... ok
+test_missing_reference_is_rejected (test_build.PackageTests.test_missing_reference_is_rejected) ... ok
+test_nonobject_manifest_returns_actionable_errors (test_build.PackageTests.test_nonobject_manifest_returns_actionable_errors) ... ok
+test_overlay_identity_must_match (test_build.PackageTests.test_overlay_identity_must_match) ... ok
+test_reference_must_stay_in_skill_package (test_build.PackageTests.test_reference_must_stay_in_skill_package) ... ok
+test_refuses_to_assemble_over_existing_user_files (test_build.PackageTests.test_refuses_to_assemble_over_existing_user_files) ... ok
+test_rejects_manifest_hooks (test_build.PackageTests.test_rejects_manifest_hooks) ... ok
+test_rejects_nested_plugin_and_marketplace (test_build.PackageTests.test_rejects_nested_plugin_and_marketplace) ... ok
+test_rejects_noncanonical_archive_paths_before_extraction (test_build.PackageTests.test_rejects_noncanonical_archive_paths_before_extraction) ... ok
+test_symlink_is_rejected (test_build.PackageTests.test_symlink_is_rejected) ... ok
+test_valid_minimal_package (test_build.PackageTests.test_valid_minimal_package) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.121s
+
+OK
