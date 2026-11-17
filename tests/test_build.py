@@ -1,8 +1,11 @@
 import importlib.util
+import hashlib
 import json
 from pathlib import Path
+import shutil
 import tempfile
 import unittest
+from unittest import mock
 import warnings
 import zipfile
 
@@ -31,6 +34,14 @@ class PackageTests(unittest.TestCase):
 
     def body(self, text):
         (self.skill / 'SKILL.md').write_text('---\nname: sample\ndescription: Use when testing the package.\n---\n\n' + text)
+
+    def copy_project(self):
+        project = self.base / 'project'
+        project.mkdir()
+        for directory in ('content', 'inputs'):
+            shutil.copytree(SCRIPT.parents[1] / directory, project / directory)
+        shutil.copyfile(SCRIPT.parents[1] / 'input-sources.json', project / 'input-sources.json')
+        return project
 
     def test_valid_minimal_package(self):
         self.assertEqual(build.validate_package(self.root), [])
@@ -81,6 +92,18 @@ class PackageTests(unittest.TestCase):
         overlay.mkdir()
         (overlay / 'plugin.json').write_text(json.dumps({**self.manifest, 'version': '9.0.0', 'skills': './skills/'}))
         self.assertTrue(any('version' in e for e in build.validate_package(self.root)))
+
+    def test_overlay_subtitle_limit(self):
+        overlay = self.root / '.codex-plugin'
+        overlay.mkdir()
+        for subtitle, valid in [('A' * 30, True), ('A' * 31, False), (' ', False), ([], False)]:
+            with self.subTest(subtitle=subtitle):
+                (overlay / 'plugin.json').write_text(json.dumps({
+                    **self.manifest, 'skills': './skills/',
+                    'interface': {'shortDescription': subtitle},
+                }))
+                errors = build.validate_package(self.root)
+                self.assertEqual(not errors, valid, errors)
 
     def test_deterministic_rootless_archive(self):
         a, b = self.base / 'a.zip', self.base / 'b.zip'
@@ -223,6 +246,99 @@ class PackageTests(unittest.TestCase):
     def test_refuses_to_assemble_over_existing_user_files(self):
         with self.assertRaises(ValueError):
             build.assemble(self.root)
+
+    def test_local_references_have_verifiable_provenance(self):
+        target = self.base / 'assembled'
+        build.assemble(target)
+        records = json.loads((target / 'SOURCES.json').read_text())['references']
+        local = next((r for r in records if r.get('origin') == 'local'
+                      and r['path'] == 'content/advanced-testing.md'), None)
+        self.assertIsNotNone(local)
+        source = SCRIPT.parents[1] / 'content/advanced-testing.md'
+        expected = hashlib.sha256(source.read_bytes()).hexdigest()
+        self.assertEqual(local['sha256'], expected)
+        self.assertEqual(hashlib.sha256((target / local['destination']).read_bytes()).hexdigest(), expected)
+
+    def test_local_reference_cannot_read_or_write_outside_its_declared_location(self):
+        project = self.copy_project()
+        outside = project / 'escape.md'
+        outside.write_text('Outside the maintained reference directory.\n')
+        (project / 'content/link.md').symlink_to(outside)
+        catalog_path = project / 'content/catalog.json'
+        catalog = json.loads(catalog_path.read_text())
+        entry = next(e for e in catalog if e['name'] == 'frontend')
+        for index, path in enumerate(('../escape.md', str(outside), 'link.md')):
+            with self.subTest(path=path):
+                entry['local_references'] = [path]
+                catalog_path.write_text(json.dumps(catalog))
+                with mock.patch.object(build, 'PROJECT', project):
+                    with self.assertRaisesRegex(ValueError, 'local reference'):
+                        build.assemble(self.base / ('assembly-' + str(index)))
+                self.assertEqual(outside.read_text(), 'Outside the maintained reference directory.\n')
+
+    def test_reference_collisions_cannot_silently_replace_packaged_guidance(self):
+        project = self.copy_project()
+        (project / 'content/technical-details.md').write_text('# Maintained local instructions\n')
+        catalog_path = project / 'content/catalog.json'
+        catalog = json.loads(catalog_path.read_text())
+        entry = next(e for e in catalog if e['name'] == 'frontend')
+        for index, refs in enumerate((['technical-details.md'], ['preferences.md'],
+                                      ['visual-review.md', 'visual-review.md'])):
+            with self.subTest(references=refs):
+                entry['local_references'] = refs
+                catalog_path.write_text(json.dumps(catalog))
+                with mock.patch.object(build, 'PROJECT', project):
+                    with self.assertRaisesRegex(ValueError, 'collision'):
+                        build.assemble(self.base / ('collision-' + str(index)))
+
+    def test_different_section_selections_cannot_share_one_destination(self):
+        project = self.copy_project()
+        catalog_path = project / 'content/catalog.json'
+        catalog = json.loads(catalog_path.read_text())
+        entry = next(e for e in catalog if e['name'] == 'frontend')
+        original = entry['references'][0]
+        first = {**original, 'sections': ['Component Architecture']}
+        second = {**original, 'sections': ['State Management']}
+        entry['references'] = [first, second]
+        catalog_path.write_text(json.dumps(catalog))
+        with mock.patch.object(build, 'PROJECT', project):
+            with self.assertRaisesRegex(ValueError, 'collision'):
+                build.assemble(self.base / 'selection-collision')
+
+    def test_reference_checksum_mismatch_preserves_previous_good_archive(self):
+        ref = self.skill / 'references/check.md'
+        ref.parent.mkdir()
+        ref.write_text('# Original checked guidance\n')
+        digest = hashlib.sha256(ref.read_bytes()).hexdigest()
+        for origin in ('local', 'adapted'):
+            with self.subTest(origin=origin):
+                ref.write_text('# Original checked guidance\n')
+                record = {'destination': 'skills/sample/references/check.md',
+                          'sha256': digest if origin == 'local' else '1' * 64}
+                if origin == 'local':
+                    record['origin'] = 'local'  # Also exercise legacy 0.3 local records.
+                else:
+                    record['packaged_sha256'] = digest
+                (self.root / 'SOURCES.json').write_text(json.dumps({
+                    'skills': [{'name': 'sample', 'manual_only': False}], 'references': [record],
+                }))
+                out = self.base / (origin + '.zip')
+                build.write_archive(self.root, out)
+                previous = out.read_bytes()
+                ref.write_text('# Changed guidance without updating its record\n')
+                with self.assertRaisesRegex(ValueError, 'checksum'):
+                    build.write_archive(self.root, out)
+                self.assertEqual(out.read_bytes(), previous)
+
+    def test_source_map_reference_records_are_validated(self):
+        for record in ({'destination': '../outside.md', 'packaged_sha256': '0' * 64},
+                       {'destination': 'skills/sample/SKILL.md', 'packaged_sha256': 'wrong'},
+                       'not an object'):
+            with self.subTest(record=record):
+                (self.root / 'SOURCES.json').write_text(json.dumps({
+                    'skills': [{'name': 'sample', 'manual_only': False}], 'references': [record],
+                }))
+                self.assertTrue(any('source-map reference' in e for e in build.validate_package(self.root)))
 
 
 if __name__ == '__main__':

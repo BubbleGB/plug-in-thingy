@@ -1,0 +1,27 @@
+{
+  "version": "0.3.1",
+  "source_baseline": "159a408d53f1c1e52da646282b9293f09fab150b",
+  "package_baseline": {
+    "tests": 31,
+    "result": "Four new tests failed across nine intended subcases before implementation",
+    "log_sha256": "be74cdbc2a2f63d9b8a181ff276b508793735b3a748e031519a0c00adfea5ae6"
+  },
+  "installed_skill_use": {
+    "version": "0.3.0",
+    "sampled_resources": 10,
+    "byte_matches": 10,
+    "record": "docs/CLOUD-SMOKE-0.3.json",
+    "limits": "Resource availability/content only; not a native routing or Android UI test."
+  },
+  "prospective_scenarios": {
+    "path": "tests/research-scenarios.json",
+    "count": 16,
+    "new_cases": [
+      "addons-help",
+      "version-help"
+    ],
+    "fresh_model_trials": "not run; prior CLI authentication blocker remains unaddressed"
+  },
+  "self_review": "One consolidated source/diff review; no independent reviewer or agent fan-out.",
+  "target_version_runtime": "0.3.1 not installed/tested in managed host here"
+}

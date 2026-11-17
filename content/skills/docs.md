@@ -20,3 +20,8 @@ For domain terminology, apply [shared vocabulary](references/domain-vocabulary.m
 Record the resolved meaning, not a pile of implementation notes. Keep existing
 context boundaries and useful project terms; a naming discussion alone does not
 authorize a code rename or new persistent documents.
+
+For a system explanation that benefits from a diagram, use
+[system diagrams](references/system-diagrams.md). Support factual edges with
+source evidence and label proposed/illustrative content. A simple inline view
+is enough when no persistent artifact is requested.

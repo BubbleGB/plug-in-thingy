@@ -1,4 +1,4 @@
-# Unified Engineering 0.2.1
+# Unified Engineering 0.3.1
 
 One skills-only engineering plugin combining Ponytail's simplicity, Superpowers' development methods, Addy Osmani's specialist engineering expertise and selected Matt Pocock methods, with refinements informed by the Karpathy-inspired community guidelines. This is an independent adaptation, not an official release or endorsement by those projects.
 
@@ -43,7 +43,7 @@ One workflow owns the task; specialists contribute relevant checks without resta
 
 ## Install and test on ChatGPT / Android
 
-Use the single plugin upload ZIP, **unified-engineering-0.2.1.zip**. The separate **source ZIP is for maintenance**, not plugin upload. The upload ZIP has one plugin root, a portable manifest and one Codex compatibility overlay. It contains no marketplace catalog or nested original plugins.
+Use the single plugin upload ZIP, **unified-engineering-0.3.1.zip**. The separate **source ZIP is for maintenance**, not plugin upload. The upload ZIP has one plugin root, a portable manifest and one Codex compatibility overlay. It contains no marketplace catalog or nested original plugins.
 
 Use the actual plugin upload/import flow available to your account. Android/account-specific plugin-management controls may vary; no CLI, Android terminal, Node installation or local MCP server is needed for the plugin's instruction-only core. If the upload is rejected, retain the exact error and archive version; do not turn this into a marketplace archive blindly.
 
@@ -77,6 +77,37 @@ Property and mutation guidance is independently written; no Trail of Bits ShareA
 
 ## Verified cloud access and patch 0.2.1
 
-In the development ChatGPT session, the installed 0.2.0 package exposed 24 automatic entries; all 30 skills and 95 packaged Markdown documents were explicitly readable and matched the release exactly. Six manual-only skills were not listed automatically. This verifies cloud discovery/resource access for that installation, not Android UI controls or universal automatic activation. Version 0.2.1 remains a separate artifact requiring upload.
+In the development ChatGPT session, the installed 0.2.0 package exposed 24 automatic entries; all 30 skills and 95 packaged Markdown documents were explicitly readable and matched the release exactly. Six manual-only skills were not listed automatically. This verifies cloud discovery/resource access for that installation, not Android UI controls or universal automatic activation. That historical check does not establish acceptance of 0.3.0; the new ZIP requires its own managed upload/session test.
 
 The patch checks invocation metadata and manual-policy consistency, rejects empty skill directories, and reports malformed UTF-8 references as validation errors. No extra skills, hooks or background services are added.
+
+## Added in 0.3
+
+Existing frontend, security, architecture, docs and skill-authoring entries now
+link focused guidance for visual hierarchy, RTL/expanded content, purposeful
+motion, source-backed diagrams, audit coverage and evidence, package intake,
+and comparable skill evaluations. These references load only when relevant;
+the 30 skill names, modes and six manual-only entries are unchanged.
+
+New references are independently authored. SOURCES.json records reviewed
+conceptual sources and hashes every local reference. The builder rejects
+traversal/absolute/symlink local references before copying them, and checks the
+listing subtitle limit. No external scanner, renderer, memory worker or hooks
+are installed. Static verification is supplied; fresh model trials were blocked
+by CLI sign-in, and managed ChatGPT/Android acceptance remains pending.
+
+## Refinements in 0.3.1
+
+Ask “which add-ons are included?” for a self-contained source inventory through
+engineering help. It distinguishes the four adapted collections, Karpathy-inspired
+principles, ten conceptual influences and separately configured host tools. A new
+GitHub release does not mean the installed ChatGPT plugin has updated.
+
+The builder rejects reference output collisions and conflicting section
+selections instead of silently replacing guidance. It records and verifies the
+packaged reference checksums, while retaining original source hashes. A checksum
+is consistency evidence, not a publisher signature or a malware scan.
+
+Ten sampled installed v0.3.0 skills/references matched that release in a real cloud
+readback. That check does not establish v0.3.1 installation, routing or Android UI
+behavior. Keep the previous working ZIP until the update passes your workflow.

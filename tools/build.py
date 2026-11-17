@@ -128,6 +128,42 @@ def metadata_policy(text):
     return implicit
 
 
+def reference_record_errors(root, records):
+    """Check bundled bytes, not the unavailable original upstream source tree."""
+    if not isinstance(records, list):
+        return ['invalid source-map references: expected a list']
+    errors, seen = [], set()
+    for record in records:
+        try:
+            if not isinstance(record, dict) or not isinstance(record.get('destination'), str):
+                raise ValueError('expected an object with a destination')
+            destination = record['destination']
+            path = PurePosixPath(destination)
+            if (path.is_absolute() or '..' in path.parts or path.as_posix() != destination
+                    or any(char in destination for char in ('\\', ':', '\x00'))):
+                raise ValueError('unsafe destination: ' + destination)
+            target = root / destination
+            if not target.resolve().is_relative_to(root) or not target.is_file():
+                raise ValueError('missing or escaped destination: ' + destination)
+            if destination in seen:
+                raise ValueError('duplicate destination: ' + destination)
+            seen.add(destination)
+            digests = []
+            if 'packaged_sha256' in record:
+                digests.append(record['packaged_sha256'])
+            if record.get('origin') == 'local':
+                digests.append(record.get('sha256'))  # Legacy local records are verbatim.
+            if any(not isinstance(d, str) or not re.fullmatch(r'[0-9a-f]{64}', d) for d in digests):
+                raise ValueError('invalid checksum: ' + destination)
+            if digests:
+                actual = hashlib.sha256(target.read_bytes()).hexdigest()
+                if any(d != actual for d in digests):
+                    raise ValueError('checksum mismatch: ' + destination)
+        except (OSError, ValueError) as exc:
+            errors.append('invalid source-map reference: ' + str(exc))
+    return errors
+
+
 def validate_package(root):
     root = Path(root).resolve()
     errors = []
@@ -167,6 +203,14 @@ def validate_package(root):
                     errors.append('overlay differs: ' + key)
             if overlay.get('skills') != './skills/':
                 errors.append('overlay skills must be ./skills/')
+            if 'interface' in overlay:
+                interface = overlay['interface']
+                if not isinstance(interface, dict):
+                    errors.append('overlay interface must be an object')
+                elif 'shortDescription' in interface:
+                    subtitle = interface['shortDescription']
+                    if not isinstance(subtitle, str) or not subtitle.strip() or len(subtitle) > 30:
+                        errors.append('overlay shortDescription must be nonblank and at most 30 characters')
             if BLOCKED & overlay.keys():
                 errors.append('unsupported overlay fields: ' + ', '.join(sorted(BLOCKED & overlay.keys())))
         if 'extensions' in manifest:
@@ -197,6 +241,7 @@ def validate_package(root):
                 expected_policies[entry['name']] = not entry['manual_only']
             if set(expected_policies) != {skill.parent.name for skill in skills}:
                 errors.append('source-map skills differ from discoverable skills')
+            errors.extend(reference_record_errors(root, source_map.get('references', [])))
         except (OSError, ValueError) as exc:
             errors.append('invalid source map: ' + str(exc))
     for skill in skills:
@@ -324,6 +369,8 @@ def assemble(destination):
 
     def output(path, text):
         file = destination / path
+        if file.exists():
+            raise ValueError('output collision: ' + str(path))
         file.parent.mkdir(parents=True, exist_ok=True)
         file.write_text(text, encoding='utf-8')
 
@@ -346,7 +393,8 @@ def assemble(destination):
         notices.append(f'Copyright (c) {year} {author}')
     license_text = (inputs / 'ponytail/LICENSE').read_text()
     output('LICENSE', license_text.replace('Copyright (c) 2026 DietrichGebert', '\n'.join(notices) + '\nCopyright (c) 2026 Unified Engineering contributors'))
-    output('ATTRIBUTION.md', '# Attribution\n\nIndependent MIT-licensed adaptation. No upstream endorsement is implied.\n\n' + '\n'.join(f'- {p}: {a}; original complete notice in licenses/{p}-MIT.txt.' for p, a, _ in projects) + '\n\nPonytail provides the simplicity philosophy and reporting tools. Superpowers provides development workflow methods. Addy Osmani provides specialist engineering patterns and workflow refinements. Adapted skill bodies coordinate their overlapping guidance. SOURCES.json maps every canonical original skill to its unified destination and hashes each copied reference.\n\nThe simplification skill retains Addy Osmani\'s acknowledgment of Anthropic\'s Code Simplifier inspiration: https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md . Third-party links do not imply copied code or endorsement.\n\nMatt Pocock contributes selected domain-modeling, interface-design, prototyping, handoff and retrospective methods. His original MIT notice is retained in licenses/matt-pocock-MIT.txt.\n\nThe forrestchang community collection inspired by Karpathy was reviewed as conceptual input for independently worded policy refinements. It is not authored by Karpathy; no source text from that collection is redistributed. See SOURCES.json influences for the reviewed archive hash and notice limitation.\n\nProperty-testing, mutation and related-bug guidance is independently written for this plugin. No Trail of Bits ShareAlike text or OpenAI/Vercel skill code is bundled.\n')
+    attribution = '# Attribution\n\nIndependent MIT-licensed adaptation. No upstream endorsement is implied.\n\n' + '\n'.join(f'- {p}: {a}; original complete notice in licenses/{p}-MIT.txt.' for p, a, _ in projects) + '\n\nPonytail provides the simplicity philosophy and reporting tools. Superpowers provides development workflow methods. Addy Osmani provides specialist engineering patterns and workflow refinements. Adapted skill bodies coordinate their overlapping guidance. SOURCES.json maps every canonical original skill to its unified destination and hashes each copied reference.\n\nThe simplification skill retains Addy Osmani\'s acknowledgment of Anthropic\'s Code Simplifier inspiration: https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md . Third-party links do not imply copied code or endorsement.\n\nMatt Pocock contributes selected domain-modeling, interface-design, prototyping, handoff and retrospective methods. His original MIT notice is retained in licenses/matt-pocock-MIT.txt.\n\nThe forrestchang community collection inspired by Karpathy was reviewed as conceptual input for independently worded policy refinements. It is not authored by Karpathy; no source text from that collection is redistributed. See SOURCES.json influences for the reviewed archive hash and notice limitation.\n\nProperty-testing, mutation and related-bug guidance is independently written for this plugin. No Trail of Bits ShareAlike text or OpenAI/Vercel skill code is bundled.\n'
+    output('ATTRIBUTION.md', attribution + (content / 'research-attribution.md').read_text())
 
     common = (content / 'common.md').read_text().strip()
     preferences = (content / 'preferences.md').read_text()
@@ -375,7 +423,20 @@ def assemble(destination):
         if name == 'engineering':
             output(skill_dir / 'references/catalog.md', catalog_note)
         for local in entry.get('local_references', []):
-            output(skill_dir / 'references' / local, (content / local).read_text())
+            if not isinstance(local, str) or not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._-]*\.md', local):
+                raise ValueError('invalid local reference name: ' + repr(local))
+            local_path = content / local
+            if local_path.is_symlink() or not local_path.is_file():
+                raise ValueError('missing/nonregular local reference: ' + local)
+            relative = skill_dir / 'references' / local
+            raw = local_path.read_bytes()
+            output(relative, raw.decode('utf-8'))
+            sources['references'].append({
+                'origin': 'local', 'path': 'content/' + local,
+                'sha256': hashlib.sha256(raw).hexdigest(),
+                'destination': relative.as_posix(),
+                'sections': 'complete reference', 'changes': 'local maintained reference; copied verbatim',
+            })
 
         copied = {}
         def reference(source, target=None, sections=None):
@@ -385,11 +446,12 @@ def assemble(destination):
             filename = target or source_path.name
             if '/' in filename or not filename.endswith('.md'):
                 raise ValueError('invalid reference destination: ' + filename)
+            selection = (source, tuple(sections) if sections is not None else None)
             if filename in copied:
-                if copied[filename] != source:
+                if copied[filename] != selection:
                     raise ValueError('reference collision: ' + filename)
                 return filename
-            copied[filename] = source
+            copied[filename] = selection
             info = record(source)
             text = source_path.read_text()
             if sections:
@@ -447,6 +509,8 @@ def assemble(destination):
     covered = {source['path'] for entry in sources['skills'] for source in entry['sources']}
     if originals != covered:
         raise ValueError('source mapping incomplete: ' + repr(originals ^ covered))
+    for record in sources['references']:
+        record['packaged_sha256'] = hashlib.sha256((destination / record['destination']).read_bytes()).hexdigest()
     output('SOURCES.json', json.dumps(sources, indent=2) + '\n')
     return sources
 

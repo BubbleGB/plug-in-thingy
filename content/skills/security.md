@@ -20,3 +20,10 @@ For a requested hunt after one confirmed defect, use the bounded
 [related-bug method](references/bug-variants.md). Check ownership and exposure
 in each actual path; public resources and fixtures are not vulnerabilities merely
 because they resemble the original code.
+
+For a requested audit, use [audit evidence](references/audit-evidence.md) to tie
+coverage and candidate status to the current source. Keep confirmed issues,
+unverified leads and rejected hypotheses distinct; report partial coverage and
+missing evidence honestly. This does not authorize files, agents or live probes.
+For agent instruction/configuration imports, apply the relevant
+[package intake checks](references/skill-intake.md) rather than trust a badge or scan pass.

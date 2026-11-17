@@ -31,3 +31,9 @@ Use [module design patterns](references/module-design.md) selectively. Public
 behavior and failure cases remain the test surface. Do not automatically remove
 old tests: establish that meaningful coverage survives before changing them.
 Keep the result in the existing design/review workflow without restarting it.
+
+When a diagram clarifies the requested assessment, use
+[system diagrams](references/system-diagrams.md). Trace important edges to the
+current code, distinguish proposals and runtime observations, and choose a small
+inline view when sufficient. Do not install a graph engine or write artifacts
+for a report-only request.

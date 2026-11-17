@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.3.1 — 2026-11-17
+
+- Add source/add-on inventory help inside engineering; distinguish methods,
+  configured tools, installed versions and downloadable releases.
+- Reject local/generated/upstream reference output collisions and conflicting
+  section selections instead of silently dropping or overwriting guidance.
+- Record packaged reference hashes and check them during archive inspection,
+  preserving original source hashes and a previous good ZIP after failed checks.
+- Add four reproduced regressions (31 tests total) and two prospective help cases.
+- Verify ten sampled installed v0.3.0 cloud resources against the delivered ZIP.
+- Keep 30 skills, six manual-only entries, source notices and preserved Ponytail
+  files; no extra runtime, installer or hook is added.
+
+## 0.3.0 — 2026-11-17
+
+- Add five focused references through existing skills: visual review/motion,
+  audit evidence, skill/plugin intake, source-backed diagrams and evaluations.
+- Record ten reviewed conceptual sources without importing their text/runtimes.
+- Hash locally authored references and reject unsafe/symlink reference inputs.
+- Enforce the listing subtitle limit and shorten the existing subtitle.
+- Add three package regressions (27 total) and 14 prospective behavior scenarios.
+- Correct repository links to BubbleGB/plug-in-thingy; keep 30 skills and
+  the original input snapshots and preserved Ponytail skill files unchanged.
+
 ## 0.2.1 — 2026-11-16
 
 - Validate invocation metadata and compare manual-only policy with the source map.
