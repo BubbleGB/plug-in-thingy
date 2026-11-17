@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Python ${{ matrix.python }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.10', '3.13']
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+      - name: Build and inspect plugin
+        shell: bash
+        run: |
+          python tools/build.py
+          RELEASE_VERSION=$(python -c 'import json; print(json.load(open("content/plugin.json"))["version"])')
+          python tools/build.py --check "dist/unified-engineering-${RELEASE_VERSION}.zip"
+          git diff --exit-code
+      - name: Keep validated plugin artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: plugin-python-${{ matrix.python }}
+          path: dist/unified-engineering-*.zip
+          if-no-files-found: error
+          retention-days: 14

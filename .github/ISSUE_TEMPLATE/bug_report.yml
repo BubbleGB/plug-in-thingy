@@ -1,0 +1,31 @@
+name: Bug report
+description: Report a reproducible plugin or package problem.
+title: "Bug: "
+body:
+  - type: markdown
+    attributes:
+      value: "Use synthetic data. Do not include secrets or private transcripts; see SECURITY.md."
+  - type: input
+    id: version
+    attributes:
+      label: Plugin version and host
+      description: Include the release, ChatGPT/Codex client and relevant environment.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: What prompt or command triggers it? Include expected and actual behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and scope
+      description: Redacted error/output, selected skills, and whether other plugins were active.
+  - type: textarea
+    id: checks
+    attributes:
+      label: Checks already tried
+      description: Include actual results; distinguish local checks from host behavior.

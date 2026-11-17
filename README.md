@@ -1,10 +1,81 @@
-# Unified Engineering — source project
+# Unified Engineering
 
-Builds a single instruction-only plugin adapted from Ponytail 5.3.3,
-Superpowers 7.0.2, Addy Osmani Agent Skills 0.6.16 and selected Matt Pocock 1.3.2 methods. Python 3.10+ standard
-library only. No upstream code, hook or installer runs during the build.
+**Simple solutions. Sound workflows. Focused expertise.**
 
-## Build and verify
+[![CI](https://github.com/BubbleGB/unified-engineering/actions/workflows/ci.yml/badge.svg)](https://github.com/BubbleGB/unified-engineering/actions/workflows/ci.yml)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](docs/DEVELOPMENT.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+An instruction-only ChatGPT/Codex plugin with **30 coordinated engineering
+skills**. It combines Ponytail's simplicity, Superpowers' workflow methods,
+Addy Osmani's specialist guidance and selected Matt Pocock techniques, with
+independently worded refinements informed by the Karpathy-inspired community
+guidelines.
+
+One workflow owns the task. Specialists add the checks that matter. Clear tasks
+stay small; consequential changes get proportionate planning and verification.
+
+**[Download releases](https://github.com/BubbleGB/unified-engineering/releases)** ·
+**[Skill catalog](docs/SKILLS.md)** · **[Development](docs/DEVELOPMENT.md)** ·
+**[Changelog](CHANGELOG.md)**
+
+## Install and use
+
+1. Download **`unified-engineering-0.2.1.zip`** from the
+   [v0.2.1 release](https://github.com/BubbleGB/unified-engineering/releases/tag/v0.2.1).
+   Source ZIPs and GitHub's automatic source downloads are for development,
+   not plugin upload.
+2. Import the plugin ZIP through the supported plugin flow available to your
+   ChatGPT account. Management controls may vary by account/client.
+3. Select the plugin/skill where supported, or ask in ordinary language:
+
+   > Use Unified Engineering to fix this bug.
+   >
+   > Review this diff only; do not edit files.
+   >
+   > Use Lite mode and implement the approved plan.
+
+Keep existing working plugins until the replacement passes your actual workflow.
+Other installed routers can still affect behavior; this plugin cannot disable
+them. No Android terminal, executable hooks, MCP server or background service is
+required. Code/browser work still needs appropriate host tools.
+
+## What it does
+
+| Area | Examples |
+|---|---|
+| Design and delivery | Clarify consequential ambiguity, plan slices, implement approved work, prepare releases |
+| Debugging and quality | Root-cause investigation, behavior tests, reviews, simplification, whole-repo audits |
+| Specialist engineering | APIs, frontend, security, performance, migrations, CI, observability, documentation |
+| Focused experiments | Module/interface assessment and question-driven throwaway prototypes |
+| Explicit advanced tools | Delegation, adversarial review, skill authoring, workflow diagnosis, debt and benchmark reports |
+
+See the [complete catalog](docs/SKILLS.md). Some hosts list only the 24 automatic
+entries; the six manual-only skills can require explicit selection or resource
+reading. Automatic matching is host/model behavior, not a guaranteed event hook.
+
+## Three modes, one quality floor
+
+| Mode | Behavior |
+|---|---|
+| **Lite** | Requested scope with minimal ceremony |
+| **Full** (default) | Smallest complete solution; reuse first; proportionate checks |
+| **Ultra** | Also challenge unjustified complexity once, then respect the informed choice |
+
+All modes retain correctness, security, accessibility and honest evidence.
+Session settings include `workflow=manual` and `specialists=manual`. An existing
+project-root `.unified-engineering.json` can provide defaults:
+
+```json
+{"mode":"full","workflow":"auto","specialists":"auto"}
+```
+
+Session instructions take precedence. No global persistence or automatic
+installation is promised. See [end-user instructions](content/README.md).
+
+## Build from source
+
+Requires Python 3.10+ and Git. No pip/npm install is needed.
 
 ```sh
 python -m unittest discover -s tests -v
@@ -12,49 +83,45 @@ python tools/build.py
 python tools/build.py --check dist/unified-engineering-0.2.1.zip
 ```
 
-The plugin ZIP is the upload artifact. The source ZIP is for maintenance and
-must not be uploaded as a plugin. Builds are deterministic on the same Python/
-zlib implementation, and a failed validation never replaces a good ZIP.
+The build produces one rootless plugin ZIP with a portable manifest, Codex
+compatibility overlay, self-contained references and retained notices. It runs
+no upstream installers or hooks. Builds are deterministic on the same Python/
+zlib implementation; failed validation preserves the previous good ZIP.
 
-## Layout
+## Verification and limits
 
-- `content/common.md`: the common policy, inserted into 27 adapted skill bodies.
-- `content/skills/`: canonical workflow and specialist bodies.
-- `content/catalog.json`: all 52 selected original skills mapped to 30 entry points,
-  selected reference sections and manual-only invocation metadata.
-- `inputs/`: regular files from the four redistributed source snapshots (three complete, Matt selected), retained
-  for reproducibility. Harness symlinks are not used. Treat these as source
-  evidence; their contributor instructions are not the unified runtime policy.
-- `input-sources.json`: archive hashes, versions and audit comparison.
-- `tools/build.py`: assemble, localize references, inspect and package.
-- `tests/`: meaningful package/security fixtures and recorded offline behavior
-  trials. These do not exercise native managed ChatGPT routing.
-- `docs/`: approved architecture/audit and evidence of build/review status.
+- **24 package/security tests** cover assembly, source mapping, invocation
+  metadata, broken references, unsafe ZIP paths and failure behavior.
+- In a managed ChatGPT session, installed **0.2.0** exposed 24 automatic skills;
+  all 30 skills and **95 Markdown documents** matched the release exactly.
+- **0.2.1** adds stricter metadata, missing-entry and UTF-8 checks. Its source
+  archive was rebuilt into a byte-identical plugin ZIP.
 
-To change a skill, edit its maintained content or selected technical sections,
-then run the tests and inspect the generated artifact. Do not edit a generated
-ZIP or install all original skill trees alongside the consolidated catalog.
-Add a demonstrated behavior scenario before changing policy. Update source
-hashes/mapping deliberately when adopting a new upstream snapshot; no update
-is fetched automatically.
+These checks do not establish universal implicit activation, Android UI controls,
+standalone behavior with other routers disabled, or installation of a new ZIP.
+Read the [current validation report](docs/VALIDATION-0.2.1.md) and
+[evidence index](docs/README.md). Ponytail benchmark figures describe upstream
+Ponytail, not measured savings from this plugin.
 
-The package preserves Ponytail audit/debt/gain SKILL.md bytes. Gain's full
-benchmark report is included with its harness-doc link pinned upstream; its
-README reference is a concise source note rather than the marketing README.
-The full original README remains in inputs/ponytail/README.md. This avoids
-shipping unrelated assets without altering the reported benchmark numbers.
+## Project layout
 
-Read `content/README.md` for end-user use and Android acceptance steps. Read
-`docs/VALIDATION-0.2.1.md` for what was actually tested. No upload, cloud activation,
-Android-device test or existing-plugin replacement is implied by a local pass.
+```text
+content/         Maintained policy, skill bodies, reference selections and metadata
+inputs/          Pinned upstream source evidence; never installed wholesale
+tools/build.py   Standard-library assembler, inspector and ZIP builder
+tests/           Regression tests and recorded offline behavior exercises
+docs/            Maintainer guides, decisions and versioned evidence
+dist/            Generated archives; ignored by Git, attached to releases
+```
 
-## Licensing
+Read [CONTRIBUTING.md](CONTRIBUTING.md) before changing skills or source inputs.
+Coding-agent instructions are in [AGENTS.md](AGENTS.md).
 
-MIT. Original complete notices are in `inputs/*/LICENSE` and in every built
-plugin under `licenses/`. Retain those notices, ATTRIBUTION.md and SOURCES.json
-when distributing the built package. This project does not claim upstream
-endorsement or the original authorship of imported methods.
+## License and attribution
 
-The fifth reviewed source is forrestchang's Karpathy-inspired community collection. Its independently phrased conceptual influence is recorded in content/influences.json; no original text is redistributed while its complete standalone notice is unresolved. Advanced testing and related-bug guidance are independently written, not copied from ShareAlike material.
-
-The 0.2.1 validator accepts the project's generated OpenAI YAML profile: string interface fields and a boolean invocation policy. It is intentionally not a general-purpose YAML/OpenAI metadata schema validator and does not accept undeclared tool dependencies. When SOURCES.json is present, discoverable entries and invocation flags must match its recorded intent. See docs/CLOUD-SMOKE-0.2.json for real installed-package retrieval evidence.
+MIT; retain [LICENSE](LICENSE), [ATTRIBUTION.md](ATTRIBUTION.md) and all original
+notices. The built package retains four complete MIT notices and records 52
+selected source definitions and hashes in SOURCES.json. The Karpathy-inspired
+community source is conceptual input only; no text from it is redistributed.
+No Trail of Bits ShareAlike, OpenAI Apache or Vercel skill content is bundled.
+This is an independent adaptation and implies no upstream endorsement.

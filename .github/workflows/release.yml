@@ -1,0 +1,43 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - name: Verify, test and package
+        shell: bash
+        run: |
+          RELEASE_VERSION=$(python -c 'import json; print(json.load(open("content/plugin.json"))["version"])')
+          test "${GITHUB_REF_NAME}" = "v${RELEASE_VERSION}"
+          test -f "docs/releases/v${RELEASE_VERSION}.md"
+          python -m unittest discover -s tests -v
+          python tools/build.py
+          python tools/build.py --check "dist/unified-engineering-${RELEASE_VERSION}.zip"
+          git archive --format=zip --prefix=unified-engineering-source/ --output="dist/unified-engineering-source-${RELEASE_VERSION}.zip" HEAD
+          (cd dist && sha256sum "unified-engineering-${RELEASE_VERSION}.zip" "unified-engineering-source-${RELEASE_VERSION}.zip" > SHA256SUMS.txt)
+          git diff --exit-code
+      - name: Publish test prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          gh release create "${GITHUB_REF_NAME}" dist/*.zip dist/SHA256SUMS.txt \
+            --verify-tag --prerelease --title "Unified Engineering ${GITHUB_REF_NAME}" \
+            --notes-file "docs/releases/${GITHUB_REF_NAME}.md"

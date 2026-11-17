@@ -1,0 +1,23 @@
+name: Improvement proposal
+description: Propose a focused improvement to an existing workflow or a distinct capability.
+title: "Improve: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem should this solve?
+      description: Give a concrete task or example, without private data.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: What should the plugin do, and how could we verify it?
+    validations:
+      required: true
+  - type: textarea
+    id: overlap
+    attributes:
+      label: Existing skills and trade-offs
+      description: Could this fit an existing skill? Mention dependencies, cost or licensing implications.
