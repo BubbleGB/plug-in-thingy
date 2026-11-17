@@ -26,6 +26,11 @@ Manual verification is accessible through “engineering verify”. A verificati
 
 For help, give the relevant entry from [the catalog](references/catalog.md), the three modes and the @/plain-language invocation options. For original benchmark results use `ponytail-gain`; for deliberate shortcut comments use `ponytail-debt`.
 
+For “which add-ons/sources are included?” use the [component inventory](references/addons.md).
+Distinguish adapted sources, conceptual influences and separately configured host
+tools. For version/update questions, distinguish installed metadata or a user
+report from a source branch or new ZIP; a GitHub update does not install it.
+
 Some hosts omit manual-only skills from automatic listings. Distinguish that
 from missing content: use supported explicit selection or package/resource
 reading before reporting a catalog skill unavailable. File access alone does

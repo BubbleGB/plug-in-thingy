@@ -1,4 +1,4 @@
-# Unified Engineering 0.3.0
+# Unified Engineering 0.3.1
 
 One skills-only engineering plugin combining Ponytail's simplicity, Superpowers' development methods, Addy Osmani's specialist engineering expertise and selected Matt Pocock methods, with refinements informed by the Karpathy-inspired community guidelines. This is an independent adaptation, not an official release or endorsement by those projects.
 
@@ -43,7 +43,7 @@ One workflow owns the task; specialists contribute relevant checks without resta
 
 ## Install and test on ChatGPT / Android
 
-Use the single plugin upload ZIP, **unified-engineering-0.3.0.zip**. The separate **source ZIP is for maintenance**, not plugin upload. The upload ZIP has one plugin root, a portable manifest and one Codex compatibility overlay. It contains no marketplace catalog or nested original plugins.
+Use the single plugin upload ZIP, **unified-engineering-0.3.1.zip**. The separate **source ZIP is for maintenance**, not plugin upload. The upload ZIP has one plugin root, a portable manifest and one Codex compatibility overlay. It contains no marketplace catalog or nested original plugins.
 
 Use the actual plugin upload/import flow available to your account. Android/account-specific plugin-management controls may vary; no CLI, Android terminal, Node installation or local MCP server is needed for the plugin's instruction-only core. If the upload is rejected, retain the exact error and archive version; do not turn this into a marketplace archive blindly.
 
@@ -95,3 +95,19 @@ traversal/absolute/symlink local references before copying them, and checks the
 listing subtitle limit. No external scanner, renderer, memory worker or hooks
 are installed. Static verification is supplied; fresh model trials were blocked
 by CLI sign-in, and managed ChatGPT/Android acceptance remains pending.
+
+## Refinements in 0.3.1
+
+Ask “which add-ons are included?” for a self-contained source inventory through
+engineering help. It distinguishes the four adapted collections, Karpathy-inspired
+principles, ten conceptual influences and separately configured host tools. A new
+GitHub release does not mean the installed ChatGPT plugin has updated.
+
+The builder rejects reference output collisions and conflicting section
+selections instead of silently replacing guidance. It records and verifies the
+packaged reference checksums, while retaining original source hashes. A checksum
+is consistency evidence, not a publisher signature or a malware scan.
+
+Ten sampled installed v0.3.0 skills/references matched that release in a real cloud
+readback. That check does not establish v0.3.1 installation, routing or Android UI
+behavior. Keep the previous working ZIP until the update passes your workflow.

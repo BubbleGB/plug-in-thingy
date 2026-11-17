@@ -10,17 +10,21 @@ One instruction-only ChatGPT/Codex plugin with **30 coordinated engineering
 skills**. It integrates selected methods into one workflow instead of installing
 every upstream collection as a separate add-on.
 
-## Current versions: what is actually available?
+## Current version and installed status
 
-| Location | Version | Status |
-|---|---|---|
-| Default branch `main` | **0.2.1** | Existing five-source core; 24 package tests |
-| [Draft PR #4](https://github.com/BubbleGB/plug-in-thingy/pull/4), branch `build/research-improvements` | **0.3.0 candidate** | Adds the focused guidance below and packaging fixes; 27 package tests and GitHub CI passed for its implementation |
-| Your installed ChatGPT plugin | Depends on the version you imported | GitHub changes do **not** automatically update it; 0.3.0 has not been installed or verified in managed ChatGPT/Android |
+**This source tree is v0.3.1.** Use the matching plugin ZIP from
+[GitHub Releases](https://github.com/BubbleGB/plug-in-thingy/releases) or build it
+below. A source ZIP is for maintenance, not plugin upload.
 
-The 0.3.0 candidate is built and available for testing, but is not merged into
-`main`. Existing plugins remain installed. Do not confuse a source update,
-passing CI or an available ZIP with a completed plugin installation.
+| Item | Status |
+|---|---|
+| v0.3.1 refinements | Same 30 skills; in-plugin source/add-on help, collision protection and packaged reference checksum verification |
+| v0.3.0 installed-resource check | Ten sampled skills/references were readable in the managed cloud registry and matched the delivered ZIP exactly |
+| Your installed ChatGPT plugin | Depends on the version you imported; updating GitHub does **not** automatically update it |
+| v0.3.1 managed acceptance | Not installed or runtime-tested here; upload it to update, then check your actual Android workflow |
+
+Keep the previous working ZIP for rollback. Source/build checks and cloud file
+access do not prove universal activation or device compatibility.
 
 ## Which sources are we using?
 
@@ -40,7 +44,7 @@ Karpathy-inspired collection is community work, not authored by Andrej Karpathy.
 See [attribution](ATTRIBUTION.md), [input provenance](input-sources.json) and
 [the skill catalog](docs/SKILLS.md) for the exact integration.
 
-### Additional ideas used in the 0.3.0 candidate
+### Additional ideas introduced in 0.3
 
 These ten projects informed **our own five reference documents**. They are not
 ten installed plugins. We copied none of their original text, code, scripts,
@@ -61,14 +65,15 @@ hooks, assets or runtimes into the package.
 
 The five references are visual review (including motion), audit evidence,
 skill/plugin intake, system diagrams and skill evaluation. They are consulted
-when relevant, not loaded as another always-on workflow. The candidate keeps
-the same 30 skill names and six manual-only entries.
+when relevant, not loaded as another always-on workflow. The package keeps
+the same 30 skill names and six manual-only entries. The additional source-help
+reference in 0.3.1 explains this inventory inside the plugin itself.
 
-Exact reviewed revisions and file hashes are recorded in the candidate's
-[influence map](https://github.com/BubbleGB/plug-in-thingy/blob/build/research-improvements/content/influences.json).
+Exact reviewed revisions and file hashes are recorded in the
+[influence map](content/influences.json).
 The built package's `SOURCES.json` also hashes locally authored references.
-See the [research and source assessments](https://github.com/BubbleGB/plug-in-thingy/blob/build/research-improvements/docs/github-survey.md)
-and [0.3.0 validation](https://github.com/BubbleGB/plug-in-thingy/blob/build/research-improvements/docs/VALIDATION-0.3.md).
+See the [research and source assessments](docs/github-survey.md)
+and [current validation](docs/VALIDATION-0.3.1.md).
 Researching a project is not a claim that its full functionality was integrated.
 
 ## What is not bundled or configured?
@@ -89,7 +94,7 @@ available and relevant. No source repository is downloaded or installed at runti
 
 ## Use it
 
-Use the versioned **plugin ZIP**, such as `unified-engineering-0.3.0.zip`, for
+Use the versioned **plugin ZIP**, such as `unified-engineering-0.3.1.zip`, for
 the supported upload/import flow available to your ChatGPT account. Source ZIPs
 and GitHub's automatic source downloads are for development, not plugin upload.
 Use the delivered artifact or build it below; published artifacts, when available,
@@ -145,10 +150,11 @@ python -m unittest discover -s tests -v
 python tools/build.py
 ```
 
-Inspect the ZIP matching the checked-out branch:
+Inspect the generated ZIP:
 
-- `main`: `python tools/build.py --check dist/unified-engineering-0.2.1.zip`
-- PR #4 branch: `python tools/build.py --check dist/unified-engineering-0.3.0.zip`
+```sh
+python tools/build.py --check dist/unified-engineering-0.3.1.zip
+```
 
 The builder produces one plugin ZIP with a portable manifest, Codex compatibility
 overlay, self-contained references and retained notices. It runs no upstream
@@ -157,21 +163,22 @@ failed validation preserves the previous good ZIP.
 
 ## What has actually been verified?
 
-- **0.2.1 / main:** 24 package/security tests; source rebuild reproduced the ZIP.
-- **0.3.0 candidate:** 27 package tests, archive inspection/CRC, local-reference
-  provenance, portable manifest schema, YAML parsing and a byte-identical clean
-  source rebuild. GitHub CI passed for the implementation. It also rejects unsafe
-  local-reference paths/symlinks and oversized listing subtitles.
-- **Historical managed-host check, 0.2.0 only:** 24 automatic entries were listed;
-  all 30 skills and 95 cloud Markdown resources were readable and matched that release.
-- **Not established for 0.3.0:** managed upload, reliable native activation,
-  Android runtime behavior or measured outcome/token improvements. Fresh model
-  trials were blocked by Codex CLI sign-in; saved scenarios are not passing trials.
+- **v0.3.1 package:** 31 tests, including four new regression tests reproduced
+  against v0.3.0. Archive/reference checks and clean-source reproduction are
+  recorded in the [validation report](docs/VALIDATION-0.3.1.md).
+- **Actual v0.3.0 cloud access:** ten sampled installed skill/reference resources
+  matched the 0.3.0 ZIP byte for byte. See [the readback evidence](docs/CLOUD-SMOKE-0.3.json).
+- **Historical v0.2.0 check:** 24 automatic entries were listed; all 30 skills and
+  95 cloud Markdown resources were readable and matched that release.
+- **Not established for v0.3.1:** managed upload, reliable native activation,
+  Android UI behavior or measured outcome/token improvements. Fresh text-only
+  comparisons remain unavailable after the earlier CLI sign-in failure.
 
 Package tests, cloud resource access and real-device task trials are different
-evidence. Ponytail benchmark figures describe upstream Ponytail, not measured
-savings from Unified Engineering. See the [evidence index](docs/README.md) and
-the candidate validation linked above.
+kinds of evidence. Checksums detect changes relative to their records; they are
+not a publisher signature or a malware scan. Ponytail benchmark figures describe
+upstream Ponytail, not measured savings from Unified Engineering. See the
+[evidence index](docs/README.md).
 
 ## Source layout and licences
 

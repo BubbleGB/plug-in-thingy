@@ -1,7 +1,7 @@
 {
   "displayName": "Unified Engineering",
   "shortDescription": "Practical engineering skills",
-  "longDescription": "An integrated, skills-only engineering toolkit adapted from Ponytail, Superpowers and Addy Osmani's Agent Skills. Full mode by default, with Lite and Ultra choices. No executable lifecycle hooks or background service.",
+  "longDescription": "An integrated, skills-only engineering toolkit adapted from Ponytail, Superpowers, Addy Osmani's Agent Skills and selected Matt Pocock methods, with independently authored specialist references. Full mode by default, with Lite and Ultra choices. No required lifecycle hooks or background service.",
   "developerName": "Unified Engineering contributors",
   "category": "Developer Tools",
   "capabilities": ["Read", "Write"],

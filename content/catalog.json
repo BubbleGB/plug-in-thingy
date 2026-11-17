@@ -8,6 +8,9 @@
       "superpowers/skills/verification-before-completion/SKILL.md",
       "agent-skills/skills/using-agent-skills/SKILL.md",
       "matt-pocock/skills/productivity/wait-what/SKILL.md"
+    ],
+    "local_references": [
+      "addons.md"
     ]
   },
   {

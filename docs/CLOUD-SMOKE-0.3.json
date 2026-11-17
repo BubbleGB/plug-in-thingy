@@ -1,0 +1,56 @@
+{
+  "version": "0.3.0",
+  "scope": "Ten sampled cloud skill/reference resources; actual resource access and byte equality, not universal activation or Android UI testing.",
+  "resources": [
+    {
+      "path": "skills/engineering/SKILL.md",
+      "sha256": "97e13846cbf7d928461cd6ab6cdbc7b03e82419d5a6321cd6c331540f04c9e61",
+      "matches_0_3_0_archive": true
+    },
+    {
+      "path": "skills/skill-authoring/SKILL.md",
+      "sha256": "cf84951490f821ba70090cd9d6b740a8c00a15fa7e641fb8adc92807f4be4364",
+      "matches_0_3_0_archive": true
+    },
+    {
+      "path": "skills/frontend/SKILL.md",
+      "sha256": "12ea0d983ef26c4d843c57473cb942e4d6f5ec6bd2f308b02cd9597b1a5d6dc8",
+      "matches_0_3_0_archive": true
+    },
+    {
+      "path": "skills/security/SKILL.md",
+      "sha256": "294dea380e962077d731d25e7992b0301426ae114c2473437f990e516b3f9605",
+      "matches_0_3_0_archive": true
+    },
+    {
+      "path": "skills/architecture/SKILL.md",
+      "sha256": "c7d87b84e24b2e1765cfc8e6ae1ebddb10f84b301680dd4bc2e1318bb86fb7c0",
+      "matches_0_3_0_archive": true
+    },
+    {
+      "path": "skills/frontend/references/visual-review.md",
+      "sha256": "4ef5759a9279d8826bd9ea57ad5356eaf9a9f8895cad346c8ae328972940db44",
+      "matches_0_3_0_archive": true
+    },
+    {
+      "path": "skills/security/references/audit-evidence.md",
+      "sha256": "996fe59f79b0b9faa1d21db81358944fb6a43e67874dceb957f4a5e876c0b2e3",
+      "matches_0_3_0_archive": true
+    },
+    {
+      "path": "skills/skill-authoring/references/skill-intake.md",
+      "sha256": "0a3271170681a3b6f328ff32613bb5d317738553aab4d5bcc33025228471b6e8",
+      "matches_0_3_0_archive": true
+    },
+    {
+      "path": "skills/architecture/references/system-diagrams.md",
+      "sha256": "5f070aec659fe1c4d0fea3a602c2f77bca2a993d4a7b6a324a4e7721c847f073",
+      "matches_0_3_0_archive": true
+    },
+    {
+      "path": "skills/skill-authoring/references/skill-evaluation.md",
+      "sha256": "1853dffe6926a38cc9d152d53ff68bb430b71339f8dfbf66f2d27ba31c42e6bb",
+      "matches_0_3_0_archive": true
+    }
+  ]
+}

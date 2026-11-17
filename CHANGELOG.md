@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.1 — 2026-11-17
+
+- Add source/add-on inventory help inside engineering; distinguish methods,
+  configured tools, installed versions and downloadable releases.
+- Reject local/generated/upstream reference output collisions and conflicting
+  section selections instead of silently dropping or overwriting guidance.
+- Record packaged reference hashes and check them during archive inspection,
+  preserving original source hashes and a previous good ZIP after failed checks.
+- Add four reproduced regressions (31 tests total) and two prospective help cases.
+- Verify ten sampled installed v0.3.0 cloud resources against the delivered ZIP.
+- Keep 30 skills, six manual-only entries, source notices and preserved Ponytail
+  files; no extra runtime, installer or hook is added.
+
 ## 0.3.0 — 2026-11-17
 
 - Add five focused references through existing skills: visual review/motion,

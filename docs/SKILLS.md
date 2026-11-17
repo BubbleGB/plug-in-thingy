@@ -38,7 +38,7 @@ a guarantee of invocation. Manual entries need an explicit request/selection.
 
 The installed 0.2.0 cloud package exposed 24 automatic entries while all 30
 skills remained explicitly readable. Listing behavior and UI can differ by host.
-See [validation](VALIDATION-0.3.md) for the exact evidence and remaining limits.
+See [validation](VALIDATION-0.3.1.md) for the exact evidence and remaining limits.
 
 Full/Lite/Ultra change scope/complexity guidance, not the correctness floor.
 Use “engineering help” for modes, “engineering verify” for evidence checks, and
@@ -47,3 +47,7 @@ ordinary task requests for relevant workflows. A review-only request stays read-
 Version 0.3.0 keeps discovery descriptions and invocation policy unchanged.
 Five conditional references enrich frontend, security, architecture, docs and
 skill-authoring; no new top-level skill, router or automatic agent workflow is added.
+
+Version 0.3.1 adds source/add-on inventory help inside engineering, with no new
+skill or discovery-description change. It distinguishes included methods from
+external tools and installed metadata from a source/release version.

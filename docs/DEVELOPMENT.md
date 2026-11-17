@@ -6,7 +6,7 @@ checkout, cloud account, upstream installer or executable hook is needed.
 ```sh
 python -m unittest discover -s tests -v
 python tools/build.py
-python tools/build.py --check dist/unified-engineering-0.3.0.zip
+python tools/build.py --check dist/unified-engineering-0.3.1.zip
 git diff --check
 ```
 
@@ -79,3 +79,12 @@ check exact file-specific notices. A static package check is not a malware scan.
 The 0.3 behavior scenarios keep expected criteria out of model prompts. Fresh
 paired model and managed-host trials are separate from the package suite; record
 auth/tool blockers rather than treating saved scenarios as passing results.
+
+Reference destinations are exclusive: duplicate local outputs or overlapping
+local/generated/upstream filenames fail rather than overwrite content. Repeated
+upstream requests must agree on their source and section selection. SOURCES.json
+retains the original `sha256` and adds `packaged_sha256` for adapted bytes.
+Inspection verifies recorded packaged hashes and legacy verbatim local hashes,
+plus reference destination containment. Older upstream records without packaged
+hashes remain readable; no upstream source checksum is mistaken for the adapted
+artifact checksum. These checks provide consistency, not publisher authentication.
