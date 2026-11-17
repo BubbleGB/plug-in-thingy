@@ -1,0 +1,26 @@
+rank,repository,stars,observed_at,source_sha,verdict,license_assessment,url
+1,morluto/rea,465366,2026-11-17T13:06:53.786286+00:00,a88c0a55544e16a710ddaad2feb5a2c6e7011f4e,Optional integration,MIT,https://github.com/morluto/rea
+2,mattpocock/skills,326410,2026-11-17T13:06:52.922050+00:00,5863806dd4e15c63174bee4e7515a4256792ecfa,Already integrated,MIT,https://github.com/mattpocock/skills
+3,obra/superpowers,318982,2026-11-17T13:06:53.025534+00:00,22f0b463e7a5e579904dd6211a520321035526f7,Already integrated,MIT,https://github.com/obra/superpowers
+4,affaan-m/ECC,305025,2026-11-17T13:06:53.093795+00:00,3f14a103a8694e51c1df9a806217a6d0b5f7a6f7,Selective addition,MIT root; inspect embedded notices,https://github.com/affaan-m/ECC
+5,multica-ai/andrej-karpathy-skills,233892,2026-11-17T13:06:52.763541+00:00,2c606141936f1eeef17fa3043a72095b4765b9c2,Already integrated,MIT declared; complete notice unresolved,https://github.com/multica-ai/andrej-karpathy-skills
+6,firecrawl/firecrawl,202499,2026-11-17T13:06:53.912875+00:00,8e7e5887cfd69e1db2d3f16be22a642a02370aec,Optional integration,AGPL-3.0 host; sampled build skill declares ISC,https://github.com/firecrawl/firecrawl
+7,anthropics/skills,196439,2026-11-17T13:06:53.671061+00:00,e4bb5d960d87126ff3b3a8af1a104b7db67560ba,Selective addition,Per skill; sampled frontend-design and docx Apache-2.0,https://github.com/anthropics/skills
+8,DietrichGebert/ponytail,192578,2026-11-17T13:06:52.751262+00:00,96608e078b2d5ea607c5c3b8b5a54d1c1fba6846,Already integrated,MIT,https://github.com/DietrichGebert/ponytail
+9,f/prompts.chat,177724,2026-11-17T13:06:54.611292+00:00,7aeb3e8ee4bd423dbf314b8641f15b5bf28ccba6,Keep external,Root split MIT/CC0; sampled plugin/skill declares MIT,https://github.com/f/prompts.chat
+10,nextlevelbuilder/ui-ux-pro-max-skill,150707,2026-11-17T13:06:52.894662+00:00,e59ff376a41f7ca47b7541ad5c116495cbade3ee,Selective addition,MIT root; font/assets have separate metadata,https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+11,github/spec-kit,150205,2026-11-17T13:06:54.050789+00:00,e210504aa09c9273a38bba665b12b8088468c96f,Selective method only,MIT,https://github.com/github/spec-kit
+12,Graphify-Labs/graphify,149335,2026-11-17T13:06:54.754232+00:00,480b61ed91cbc08177dc2c60caa9ffd6c9b95749,Optional integration,Apache-2.0 root; additional notices present,https://github.com/Graphify-Labs/graphify
+13,Shubhamsaboo/awesome-llm-apps,144927,2026-11-17T13:06:54.281161+00:00,4f40918e7f6fb90db5d736f77e91c9a80800dd7e,Selective methods only,Apache-2.0,https://github.com/Shubhamsaboo/awesome-llm-apps
+14,harry0703/MoneyPrinterTurbo,144142,2026-11-17T13:06:54.226672+00:00,92e0f9a55b91e353565015aab74b7c50cc28f148,Keep separate,MIT,https://github.com/harry0703/MoneyPrinterTurbo
+15,garrytan/gstack,141870,2026-11-17T13:06:53.079604+00:00,e8c8625bd65fdcc0f0650f982830649d326c4bf4,Selective method only,MIT,https://github.com/garrytan/gstack
+16,stablyai/orca,127372,2026-11-17T13:06:54.729567+00:00,787138074a5c2a67782caaa1dd91c1a07b2b2839,Optional separate workbench,MIT,https://github.com/stablyai/orca
+17,browser-use/browser-use,121285,2026-11-17T13:06:54.549511+00:00,197972b206d3a6ec9fb30afcf76149c07fb8ee61,Optional integration,MIT,https://github.com/browser-use/browser-use
+18,JuliusBrussee/caveman,120923,2026-11-17T13:06:53.504334+00:00,9b243662ff98d392bc0a95b865a554583d71be75,Mostly overlap,Apache-2.0 current root; components/history need notice review,https://github.com/JuliusBrussee/caveman
+19,addyosmani/agent-skills,118522,2026-11-17T13:06:53.531727+00:00,39b723ceebf81474d0557c1fecd01eddab585563,Already integrated,MIT,https://github.com/addyosmani/agent-skills
+20,thedotmack/claude-mem,117848,2026-11-17T13:06:53.575230+00:00,3d1aa47ec6406c88a76bf9289c4a4248282303e6,Optional external integration,Apache-2.0 current root,https://github.com/thedotmack/claude-mem
+21,Leonxlnx/taste-skill,117379,2026-11-17T13:06:53.547560+00:00,f6b76575f949707b4e3c37cd86cb44b0b98643e8,Selective addition,MIT,https://github.com/Leonxlnx/taste-skill
+22,paperclipai/paperclip,114475,2026-11-17T13:06:55.082245+00:00,ca34aca77750a143dfc637c96769d64f9b14cbdb,Optional external integration,MIT,https://github.com/paperclipai/paperclip
+23,Panniantong/Agent-Reach,112581,2026-11-17T13:06:54.637181+00:00,c70ae6da5d39bc90e09ad2ae0575ccc89f31e284,Optional integration,MIT,https://github.com/Panniantong/Agent-Reach
+24,pbakaus/impeccable,111823,2026-11-17T13:06:53.662366+00:00,d41d9860b0094dcb68030657da63461212835aaa,High-priority addition,Apache-2.0,https://github.com/pbakaus/impeccable
+25,nexu-io/open-design,108046,2026-11-17T13:06:54.939607+00:00,f2ecaa3f88e1eba001379ea845e7b7754310ea6d,Optional separate design platform,Apache-2.0,https://github.com/nexu-io/open-design

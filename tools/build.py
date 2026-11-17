@@ -167,6 +167,14 @@ def validate_package(root):
                     errors.append('overlay differs: ' + key)
             if overlay.get('skills') != './skills/':
                 errors.append('overlay skills must be ./skills/')
+            if 'interface' in overlay:
+                interface = overlay['interface']
+                if not isinstance(interface, dict):
+                    errors.append('overlay interface must be an object')
+                elif 'shortDescription' in interface:
+                    subtitle = interface['shortDescription']
+                    if not isinstance(subtitle, str) or not subtitle.strip() or len(subtitle) > 30:
+                        errors.append('overlay shortDescription must be nonblank and at most 30 characters')
             if BLOCKED & overlay.keys():
                 errors.append('unsupported overlay fields: ' + ', '.join(sorted(BLOCKED & overlay.keys())))
         if 'extensions' in manifest:
@@ -347,6 +355,8 @@ def assemble(destination):
     license_text = (inputs / 'ponytail/LICENSE').read_text()
     output('LICENSE', license_text.replace('Copyright (c) 2026 DietrichGebert', '\n'.join(notices) + '\nCopyright (c) 2026 Unified Engineering contributors'))
     output('ATTRIBUTION.md', '# Attribution\n\nIndependent MIT-licensed adaptation. No upstream endorsement is implied.\n\n' + '\n'.join(f'- {p}: {a}; original complete notice in licenses/{p}-MIT.txt.' for p, a, _ in projects) + '\n\nPonytail provides the simplicity philosophy and reporting tools. Superpowers provides development workflow methods. Addy Osmani provides specialist engineering patterns and workflow refinements. Adapted skill bodies coordinate their overlapping guidance. SOURCES.json maps every canonical original skill to its unified destination and hashes each copied reference.\n\nThe simplification skill retains Addy Osmani\'s acknowledgment of Anthropic\'s Code Simplifier inspiration: https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md . Third-party links do not imply copied code or endorsement.\n\nMatt Pocock contributes selected domain-modeling, interface-design, prototyping, handoff and retrospective methods. His original MIT notice is retained in licenses/matt-pocock-MIT.txt.\n\nThe forrestchang community collection inspired by Karpathy was reviewed as conceptual input for independently worded policy refinements. It is not authored by Karpathy; no source text from that collection is redistributed. See SOURCES.json influences for the reviewed archive hash and notice limitation.\n\nProperty-testing, mutation and related-bug guidance is independently written for this plugin. No Trail of Bits ShareAlike text or OpenAI/Vercel skill code is bundled.\n')
+    attribution = destination / 'ATTRIBUTION.md'
+    output('ATTRIBUTION.md', attribution.read_text() + (content / 'research-attribution.md').read_text())
 
     common = (content / 'common.md').read_text().strip()
     preferences = (content / 'preferences.md').read_text()
@@ -375,7 +385,20 @@ def assemble(destination):
         if name == 'engineering':
             output(skill_dir / 'references/catalog.md', catalog_note)
         for local in entry.get('local_references', []):
-            output(skill_dir / 'references' / local, (content / local).read_text())
+            if not isinstance(local, str) or not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._-]*\.md', local):
+                raise ValueError('invalid local reference name: ' + repr(local))
+            local_path = content / local
+            if local_path.is_symlink() or not local_path.is_file():
+                raise ValueError('missing/nonregular local reference: ' + local)
+            relative = skill_dir / 'references' / local
+            raw = local_path.read_bytes()
+            output(relative, raw.decode('utf-8'))
+            sources['references'].append({
+                'origin': 'local', 'path': 'content/' + local,
+                'sha256': hashlib.sha256(raw).hexdigest(),
+                'destination': relative.as_posix(),
+                'sections': 'complete reference', 'changes': 'local maintained reference; copied verbatim',
+            })
 
         copied = {}
         def reference(source, target=None, sections=None):

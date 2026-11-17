@@ -16,3 +16,10 @@ Matt Pocock contributes selected domain-modeling, interface-design, prototyping,
 The forrestchang community collection inspired by Karpathy was reviewed as conceptual input for independently worded policy refinements. It is not authored by Karpathy; no source text from that collection is redistributed. See SOURCES.json influences for the reviewed archive hash and notice limitation.
 
 Property-testing, mutation and related-bug guidance is independently written for this plugin. No Trail of Bits ShareAlike text or OpenAI/Vercel skill code is bundled.
+
+The 0.3 visual review, audit evidence, skill/plugin intake, diagram and evaluation
+references are independently authored. Reviewed conceptual sources include ECC,
+Anthropic Skills, Impeccable, UI UX Pro Max, Taste Skill, Cloudflare security-audit-skill,
+Archify, Diagram Design, Front-End-Checklist and Emil Kowalski Skills. No text,
+code, hooks or assets from these sources are redistributed. SOURCES.json records
+immutable reviewed revisions/file hashes and the local reference hashes.

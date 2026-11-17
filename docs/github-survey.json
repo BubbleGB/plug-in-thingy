@@ -1,0 +1,482 @@
+{
+  "repositories": [
+    {
+      "repository": "morluto/rea",
+      "url": "https://github.com/morluto/rea",
+      "stars": 465366,
+      "observed_at": "2026-11-17T13:06:53.786286+00:00",
+      "sha": "a88c0a55544e16a710ddaad2feb5a2c6e7011f4e",
+      "license_spdx": "MIT",
+      "samples": [
+        ".claude-plugin/plugin.json",
+        ".codex-plugin/plugin.json",
+        ".cursor-plugin/skills/reverse-engineer-anything/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 1,
+      "verdict": "Optional integration",
+      "value": "Reverse engineering of shipped binaries, packages and runtime behavior.",
+      "assessment": "A legitimate Claude Code/Codex plugin: both native manifests and a public workflow skill are present. Keep it as an optional tool integration for explicitly requested artifact/runtime analysis, not a dependency of ordinary source-code architecture work. Reuse its distinction between direct evidence, inference and unknowns.",
+      "license_assessment": "MIT",
+      "requirements": "Node MCP runtime; native analysis may require Hopper, Ghidra, IDA or Kuna and additional platform support. The skill itself explicitly says loading it does not install/register the runtime."
+    },
+    {
+      "repository": "mattpocock/skills",
+      "url": "https://github.com/mattpocock/skills",
+      "stars": 326410,
+      "observed_at": "2026-11-17T13:06:52.922050+00:00",
+      "sha": "5863806dd4e15c63174bee4e7515a4256792ecfa",
+      "license_spdx": "MIT",
+      "samples": [
+        "skills/engineering/codebase-design/SKILL.md",
+        "skills/engineering/domain-modeling/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 2,
+      "verdict": "Already integrated",
+      "value": "Domain language, module boundaries, prototypes and handoffs.",
+      "assessment": "Keep the selected methods already integrated. Its current tree contains additional material, but a larger catalog is not a reason to restore setup interviews or another general router.",
+      "license_assessment": "MIT",
+      "requirements": "Markdown methods; some upstream workflows assume setup scripts and host-specific commands."
+    },
+    {
+      "repository": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "stars": 318982,
+      "observed_at": "2026-11-17T13:06:53.025534+00:00",
+      "sha": "22f0b463e7a5e579904dd6211a520321035526f7",
+      "license_spdx": "MIT",
+      "samples": [
+        "skills/using-superpowers/SKILL.md",
+        "skills/verification-before-completion/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 3,
+      "verdict": "Already integrated",
+      "value": "Planning, debugging, tests and development workflow.",
+      "assessment": "Keep the coordinated workflow backbone. Do not reintroduce mandatory discovery/planning/review cycles on every small task or unconditional delegation.",
+      "license_assessment": "MIT",
+      "requirements": "Instruction methods are portable; upstream hooks and exact host tools are separate capabilities."
+    },
+    {
+      "repository": "affaan-m/ECC",
+      "url": "https://github.com/affaan-m/ECC",
+      "stars": 305025,
+      "observed_at": "2026-11-17T13:06:53.093795+00:00",
+      "sha": "3f14a103a8694e51c1df9a806217a6d0b5f7a6f7",
+      "license_spdx": "MIT",
+      "samples": [
+        "skills/security-scan/SKILL.md",
+        "skills/continuous-learning-v2/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 4,
+      "verdict": "Selective addition",
+      "value": "Agent configuration security scanning; a large engineering and learning catalog.",
+      "assessment": "Adapt the threat checklist for skill/plugin intake: instruction files, permissions, hooks, MCP definitions, secrets and install-time commands. Its security-scan delegates to AgentShield; that scanner is an additional dependency, not a capability supplied by Markdown. Do not import automatic instinct learning.",
+      "license_assessment": "MIT root; inspect embedded notices",
+      "requirements": "AgentShield is a separate npm tool. Continuous-learning-v2 requires observation hooks, background analysis and persistent storage."
+    },
+    {
+      "repository": "multica-ai/andrej-karpathy-skills",
+      "url": "https://github.com/multica-ai/andrej-karpathy-skills",
+      "stars": 233892,
+      "observed_at": "2026-11-17T13:06:52.763541+00:00",
+      "sha": "2c606141936f1eeef17fa3043a72095b4765b9c2",
+      "license_spdx": null,
+      "samples": [
+        "skills/karpathy-guidelines/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 5,
+      "verdict": "Already integrated",
+      "value": "Assumptions, small changes, simplicity and verifiable goals.",
+      "assessment": "No second coding philosophy. These principles already inform the shared policy. The original forrestchang URL resolves to this repository; count it once. This is community work inspired by Karpathy, not a Karpathy-authored package.",
+      "license_assessment": "MIT declared; complete notice unresolved",
+      "requirements": "Instruction-only core. No root LICENSE was present in the inspected tree; do not copy text until notice requirements are resolved."
+    },
+    {
+      "repository": "firecrawl/firecrawl",
+      "url": "https://github.com/firecrawl/firecrawl",
+      "stars": 202499,
+      "observed_at": "2026-11-17T13:06:53.912875+00:00",
+      "sha": "8e7e5887cfd69e1db2d3f16be22a642a02370aec",
+      "license_spdx": "AGPL-3.0",
+      "samples": [
+        "skills/firecrawl-build/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 6,
+      "verdict": "Optional integration",
+      "value": "Application web-data integration: search, scraping, extraction and browser interaction.",
+      "assessment": "Useful when a project actually selects Firecrawl. Do not import its broad activation rule that steers any app-level web-data request to Firecrawl or make an API provider mandatory. Existing sources/api/security workflows already supply the general method.",
+      "license_assessment": "AGPL-3.0 host; sampled build skill declares ISC",
+      "requirements": "FIRECRAWL_API_KEY and SDK/cloud or configured self-hosted service. Apply exact file-specific terms; do not relabel the entire upstream repository MIT."
+    },
+    {
+      "repository": "anthropics/skills",
+      "url": "https://github.com/anthropics/skills",
+      "stars": 196439,
+      "observed_at": "2026-11-17T13:06:53.671061+00:00",
+      "sha": "e4bb5d960d87126ff3b3a8af1a104b7db67560ba",
+      "license_spdx": null,
+      "samples": [
+        "skills/skill-creator/SKILL.md",
+        "skills/frontend-design/SKILL.md",
+        "skills/frontend-design/LICENSE.txt",
+        "skills/docx/LICENSE.txt"
+      ],
+      "archived": false,
+      "rank": 7,
+      "verdict": "Selective addition",
+      "value": "Skill authoring/evaluation, design and document tooling.",
+      "assessment": "Use the evaluation methodology to strengthen the existing skill-authoring workflow: baseline versus skill, positive/negative triggering cases, repeated samples and observable outcomes. Frontend-design is another useful design reference. Document editing is an optional separate domain, not core engineering scope.",
+      "license_assessment": "Per skill; sampled frontend-design and docx Apache-2.0",
+      "requirements": "Skill-creator includes Python evaluation scripts and assumes an agent execution harness. Document skills have their own runtimes. Reading instructions does not install these dependencies."
+    },
+    {
+      "repository": "DietrichGebert/ponytail",
+      "url": "https://github.com/DietrichGebert/ponytail",
+      "stars": 192578,
+      "observed_at": "2026-11-17T13:06:52.751262+00:00",
+      "sha": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846",
+      "license_spdx": "MIT",
+      "samples": [
+        "skills/ponytail/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 8,
+      "verdict": "Already integrated",
+      "value": "Small complete solutions plus audit/debt/gain reports.",
+      "assessment": "Retain the established common philosophy and the three preserved report skills. Existing Ponytail benchmark figures are not Unified Engineering performance results.",
+      "license_assessment": "MIT",
+      "requirements": "Instruction-based behavior works in the existing plugin. Upstream lifecycle scripts remain separate, unverified managed-host functionality."
+    },
+    {
+      "repository": "f/prompts.chat",
+      "url": "https://github.com/f/prompts.chat",
+      "stars": 177724,
+      "observed_at": "2026-11-17T13:06:54.611292+00:00",
+      "sha": "7aeb3e8ee4bd423dbf314b8641f15b5bf28ccba6",
+      "license_spdx": "NOASSERTION",
+      "samples": [
+        "plugins/claude/prompts.chat/.claude-plugin/plugin.json",
+        "plugins/claude/prompts.chat/skills/skill-lookup/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 9,
+      "verdict": "Keep external",
+      "value": "Prompt/skill discovery and retrieval through a real Claude plugin.",
+      "assessment": "Can help discover skills, but a registry result is untrusted input requiring source/license/script review. Existing plugin discovery already serves much of this purpose. No second global router or automatic registry-skill installation.",
+      "license_assessment": "Root split MIT/CC0; sampled plugin/skill declares MIT",
+      "requirements": "Configured prompts.chat MCP service. Registry search does not establish installed skill discovery, security or managed-host compatibility."
+    },
+    {
+      "repository": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "stars": 150707,
+      "observed_at": "2026-11-17T13:06:52.894662+00:00",
+      "sha": "e59ff376a41f7ca47b7541ad5c116495cbade3ee",
+      "license_spdx": "MIT",
+      "samples": [
+        ".claude/skills/ui-ux-pro-max/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 10,
+      "verdict": "Selective addition",
+      "value": "Concrete typography, palettes, layout, design-system and stack references.",
+      "assessment": "Add a focused visual-design reference under frontend. Preserve the project house style, accessibility and content needs; do not impose a catalog-selected style on every UI or copy the full corpus into context.",
+      "license_assessment": "MIT root; font/assets have separate metadata",
+      "requirements": "Its local search uses Python 3 and standard-library data files; an installation CLI is separate. Review exact selected files and asset notices before importing."
+    },
+    {
+      "repository": "github/spec-kit",
+      "url": "https://github.com/github/spec-kit",
+      "stars": 150205,
+      "observed_at": "2026-11-17T13:06:54.050789+00:00",
+      "sha": "e210504aa09c9273a38bba665b12b8088468c96f",
+      "license_spdx": "MIT",
+      "samples": [
+        "src/specify_cli/presets/_manager_skills.py"
+      ],
+      "archived": false,
+      "rank": 11,
+      "verdict": "Selective method only",
+      "value": "Structured specifications, process templates and generated agent skills.",
+      "assessment": "Borrow explicit requirement-to-check traceability when a project needs it. The generator source actually registers/renders SKILL.md artifacts. Do not install another project operating system or repeat the existing design/plan/implement workflow for small tasks.",
+      "license_assessment": "MIT",
+      "requirements": "Specify CLI, installed process/preset templates and project-generated artifacts. A skill generator is labeled separately from a ready-made instruction pack."
+    },
+    {
+      "repository": "Graphify-Labs/graphify",
+      "url": "https://github.com/Graphify-Labs/graphify",
+      "stars": 149335,
+      "observed_at": "2026-11-17T13:06:54.754232+00:00",
+      "sha": "480b61ed91cbc08177dc2c60caa9ffd6c9b95749",
+      "license_spdx": "Apache-2.0",
+      "samples": [
+        "graphify/skill.md",
+        "graphify/skill-codex.md"
+      ],
+      "archived": false,
+      "rank": 12,
+      "verdict": "Optional integration",
+      "value": "Persistent source/document knowledge graphs with traceable edges and query/explain tools.",
+      "assessment": "Useful on a large repository with repeated navigation needs. Prefer focused tracing first. Its broad any-codebase-question trigger and full scan should not become default policy. The public Codex adapter is real; lowercase skill.md is not evidence of invalidity or insecurity.",
+      "license_assessment": "Apache-2.0 root; additional notices present",
+      "requirements": "Python CLI/package, parsing/rendering dependencies and generated graph artifacts. Semantic/enrichment paths must distinguish inferred edges from deterministic source links."
+    },
+    {
+      "repository": "Shubhamsaboo/awesome-llm-apps",
+      "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+      "stars": 144927,
+      "observed_at": "2026-11-17T13:06:54.281161+00:00",
+      "sha": "4f40918e7f6fb90db5d736f77e91c9a80800dd7e",
+      "license_spdx": "Apache-2.0",
+      "samples": [
+        "agent_skills/advisor-orchestrator-worker/SKILL.md",
+        "agent_skills/commit-archaeologist/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 13,
+      "verdict": "Selective methods only",
+      "value": "An examples repository that also distributes public installable skills.",
+      "assessment": "Do not count it as a link-only awesome list: its agent_skills directory contains executable instructions. Commit archaeology and dependency reasoning may inform context/debug references. Reject automatic multi-model fan-out as default behavior; the sampled orchestrator calls external CLIs/APIs and includes bypass-permission flags.",
+      "license_assessment": "Apache-2.0",
+      "requirements": "Varies by skill. Sampled orchestration requires shell/jq and external model CLIs or API keys. None were invoked. Model orchestration is not supplied by copying the prose."
+    },
+    {
+      "repository": "harry0703/MoneyPrinterTurbo",
+      "url": "https://github.com/harry0703/MoneyPrinterTurbo",
+      "stars": 144142,
+      "observed_at": "2026-11-17T13:06:54.226672+00:00",
+      "sha": "92e0f9a55b91e353565015aab74b7c50cc28f148",
+      "license_spdx": "MIT",
+      "samples": [
+        "docs/skill/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 14,
+      "verdict": "Keep separate",
+      "value": "A public agent skill driving end-to-end video creation.",
+      "assessment": "Useful as a separate video-production capability, not an engineering-quality workflow. Do not adopt automatic install/config actions, fixed Chinese portrait defaults or provider choices in a general coding plugin.",
+      "license_assessment": "MIT",
+      "requirements": "Sampled skill supports macOS/Windows, uses uv and its adjacent Python helper, and needs configured model/media providers and rendering dependencies. Managed Linux/Android compatibility not established."
+    },
+    {
+      "repository": "garrytan/gstack",
+      "url": "https://github.com/garrytan/gstack",
+      "stars": 141870,
+      "observed_at": "2026-11-17T13:06:53.079604+00:00",
+      "sha": "e8c8625bd65fdcc0f0650f982830649d326c4bf4",
+      "license_spdx": "MIT",
+      "samples": [
+        "qa/SKILL.md",
+        "review/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 15,
+      "verdict": "Selective method only",
+      "value": "Browser QA, release and evidence-oriented engineering roles.",
+      "assessment": "Borrow scoped QA charters and reproducible evidence, which extend existing browser/test/ship skills. The complete generated workflows are too operationally coupled and repetitive for this plugin.",
+      "license_assessment": "MIT",
+      "requirements": "Bun/Git and built browser/runtime helpers; transcripts, telemetry/config and host-specific commands appear in workflows. Sampled review requires Agent dispatches. No blanket import."
+    },
+    {
+      "repository": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "stars": 127372,
+      "observed_at": "2026-11-17T13:06:54.729567+00:00",
+      "sha": "787138074a5c2a67782caaa1dd91c1a07b2b2839",
+      "license_spdx": "MIT",
+      "samples": [
+        "skills/orca-cli/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 16,
+      "verdict": "Optional separate workbench",
+      "value": "Agent worktrees, terminals, browser and orchestration exposed through public skills.",
+      "assessment": "Useful for someone who chooses the Orca environment. Keep its runtime-specific management outside the core; current native worktree and delegation workflows should use actual host tools. Do not replace the user Android ChatGPT workflow to obtain it.",
+      "license_assessment": "MIT",
+      "requirements": "Orca executable and its version-matched guide/runtime. The public orca-cli skill is a discovery stub, not an independent implementation."
+    },
+    {
+      "repository": "browser-use/browser-use",
+      "url": "https://github.com/browser-use/browser-use",
+      "stars": 121285,
+      "observed_at": "2026-11-17T13:06:54.549511+00:00",
+      "sha": "197972b206d3a6ec9fb30afcf76149c07fb8ee61",
+      "license_spdx": "MIT",
+      "samples": [
+        "skills/browser-use/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 17,
+      "verdict": "Optional integration",
+      "value": "Browser access for agents through public skills, CLI and supported browser connections.",
+      "assessment": "Useful when no suitable browser tool is available and this integration is explicitly chosen. Existing browser/frontend/testing methods already cover the general checks. Do not impose its CLI over a supported native browser or reuse unrelated logged-in sessions.",
+      "license_assessment": "MIT",
+      "requirements": "browser-use CLI/Python package and a browser/CDP connection; hosted paths add cloud service configuration. No new browser runtime or package was installed."
+    },
+    {
+      "repository": "JuliusBrussee/caveman",
+      "url": "https://github.com/JuliusBrussee/caveman",
+      "stars": 120923,
+      "observed_at": "2026-11-17T13:06:53.504334+00:00",
+      "sha": "9b243662ff98d392bc0a95b865a554583d71be75",
+      "license_spdx": "Apache-2.0",
+      "samples": [
+        "skills/caveman/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 18,
+      "verdict": "Mostly overlap",
+      "value": "Concise output and a larger compression/proxy ecosystem.",
+      "assessment": "Keep answer-first, clear writing. Do not adopt a caveman persona, persistent extra voice mode or token/cost savings claims. Lite already reduces ceremony without dropping technical substance.",
+      "license_assessment": "Apache-2.0 current root; components/history need notice review",
+      "requirements": "The voice skill is text; automatic modes, compression, proxy and statistics are separate runtime capabilities."
+    },
+    {
+      "repository": "addyosmani/agent-skills",
+      "url": "https://github.com/addyosmani/agent-skills",
+      "stars": 118522,
+      "observed_at": "2026-11-17T13:06:53.531727+00:00",
+      "sha": "39b723ceebf81474d0557c1fecd01eddab585563",
+      "license_spdx": "MIT",
+      "samples": [
+        "skills/api-and-interface-design/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 19,
+      "verdict": "Already integrated",
+      "value": "Engineering specialists and workflow refinements.",
+      "assessment": "Continue using the integrated specialists rather than loading a second duplicate collection. Only consider an upstream delta when it fixes a demonstrated gap.",
+      "license_assessment": "MIT",
+      "requirements": "Many methods portable; scripts, named tools, browser runners and stack-specific examples require capability checks."
+    },
+    {
+      "repository": "thedotmack/claude-mem",
+      "url": "https://github.com/thedotmack/claude-mem",
+      "stars": 117848,
+      "observed_at": "2026-11-17T13:06:53.575230+00:00",
+      "sha": "3d1aa47ec6406c88a76bf9289c4a4248282303e6",
+      "license_spdx": "Apache-2.0",
+      "samples": [
+        "plugin/skills/mem-search/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 20,
+      "verdict": "Optional external integration",
+      "value": "Persistent observations and retrieval across sessions.",
+      "assessment": "Useful only as an explicitly configured external memory integration. Prefer existing scoped handoffs in the core. Do not promise capture or future-session recall from a skill alone.",
+      "license_assessment": "Apache-2.0 current root",
+      "requirements": "Node/Bun worker, SQLite and optional vector-search tooling; capture hooks/adapters and durable storage. README states anonymous analytics are enabled by default and cloud sync is opt-in."
+    },
+    {
+      "repository": "Leonxlnx/taste-skill",
+      "url": "https://github.com/Leonxlnx/taste-skill",
+      "stars": 117379,
+      "observed_at": "2026-11-17T13:06:53.547560+00:00",
+      "sha": "f6b76575f949707b4e3c37cd86cb44b0b98643e8",
+      "license_spdx": "MIT",
+      "samples": [
+        "skills/taste-skill/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 21,
+      "verdict": "Selective addition",
+      "value": "Art direction, real content/assets and browser-backed design critique.",
+      "assessment": "Reuse content-specific design critique under frontend. Do not adopt rigid one-section-per-screen, mandatory effects, startup gates or automatic image acquisition as universal policy.",
+      "license_assessment": "MIT",
+      "requirements": "Current SKILL.md embeds a Stop hook and references Node gate scripts and browser evidence. Text adaptation must not claim these gates ran."
+    },
+    {
+      "repository": "paperclipai/paperclip",
+      "url": "https://github.com/paperclipai/paperclip",
+      "stars": 114475,
+      "observed_at": "2026-11-17T13:06:55.082245+00:00",
+      "sha": "ca34aca77750a143dfc637c96769d64f9b14cbdb",
+      "license_spdx": "MIT",
+      "samples": [
+        "integrations/assistant-plugins/claude/paperclip/.claude-plugin/plugin.json",
+        "integrations/assistant-plugins/openai/paperclip/skills/delegate-work/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 22,
+      "verdict": "Optional external integration",
+      "value": "Native Claude/Codex plugins for durable task delegation and team results.",
+      "assessment": "Good ideas: stable task IDs, idempotent request IDs, inspect uncertain outcomes before retry, and distinguish submitted/running/complete. General API/observability/delegation methods overlap; the persistent autonomous-team platform is not appropriate as a core dependency.",
+      "license_assessment": "MIT",
+      "requirements": "Connected Paperclip person/company, configured agents and service execution capacity/budget. Its plugin creates real external work; requires an actual delegation request."
+    },
+    {
+      "repository": "Panniantong/Agent-Reach",
+      "url": "https://github.com/Panniantong/Agent-Reach",
+      "stars": 112581,
+      "observed_at": "2026-11-17T13:06:54.637181+00:00",
+      "sha": "c70ae6da5d39bc90e09ad2ae0575ccc89f31e284",
+      "license_spdx": "MIT",
+      "samples": [
+        "agent_reach/skill/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 23,
+      "verdict": "Optional integration",
+      "value": "Read-only access to social/web content when existing tools cannot retrieve it.",
+      "assessment": "Useful fallback for a concrete missing source, not a reason to install channels or request login every time a site is named. Existing public fetch/search/connected apps stay first. Preserve distinctions between a page shell, full text, comments and transcripts.",
+      "license_assessment": "MIT",
+      "requirements": "agent-reach CLI plus channel-specific backends, sessions or dependencies. The sampled skill explicitly prefers built-in tools and does not authorize installation merely from a URL mention."
+    },
+    {
+      "repository": "pbakaus/impeccable",
+      "url": "https://github.com/pbakaus/impeccable",
+      "stars": 111823,
+      "observed_at": "2026-11-17T13:06:53.662366+00:00",
+      "sha": "d41d9860b0094dcb68030657da63461212835aaa",
+      "license_spdx": "Apache-2.0",
+      "samples": [
+        ".devin/skills/impeccable/SKILL.md"
+      ],
+      "archived": false,
+      "rank": 24,
+      "verdict": "High-priority addition",
+      "value": "Design critique, hierarchy, typography, polish and resilient UI states.",
+      "assessment": "Best source for a concise, task-relevant visual critique procedure. Integrate with frontend and browser; avoid another router, 24 new top-level commands or automatic design/config files.",
+      "license_assessment": "Apache-2.0",
+      "requirements": "Text references are portable. Current workflow also uses helper scripts, optional live mode and design hooks; these are not automatically available in managed ChatGPT."
+    },
+    {
+      "repository": "nexu-io/open-design",
+      "url": "https://github.com/nexu-io/open-design",
+      "stars": 108046,
+      "observed_at": "2026-11-17T13:06:54.939607+00:00",
+      "sha": "f2ecaa3f88e1eba001379ea845e7b7754310ea6d",
+      "license_spdx": "Apache-2.0",
+      "samples": [
+        "plugins/open-design/.claude-plugin/plugin.json"
+      ],
+      "archived": false,
+      "rank": 25,
+      "verdict": "Optional separate design platform",
+      "value": "A native Claude plugin exposing a design app with skills and design systems.",
+      "assessment": "Real companion plugin, not merely internal development skills. Useful if the user chooses that design platform; do not bundle its daemon, 139-skill surface or many design systems into this engineering core. Use a few portable visual-critique principles instead.",
+      "license_assessment": "Apache-2.0",
+      "requirements": "Sampled plugin explicitly requires the od daemon on PATH and stdio MCP. A large application/catalog is separate from instruction-only frontend guidance."
+    }
+  ],
+  "observed_at": "2026-11-17T13:06:55.082245+00:00",
+  "scope": "Repositories shipping public user-facing Claude Code/Codex-compatible skills, generated skill workflows, or native plugins, including companion integrations for a larger product. Excludes link-only indexes, internal-only development skills, bare agent-persona lists, and host agent/model runtimes themselves. Stars belong to the entire repository, not an individual skill/plugin.",
+  "method": {
+    "repository_searches": 16,
+    "unique_candidates": 596,
+    "trees_readmes_root_licenses_inspected": 145,
+    "max_results_per_query": 100,
+    "selection": "Highest-starred eligible repositories found in the documented search; publicly exposed skill/plugin/generator source inspected. Not an exhaustive official GitHub category.",
+    "stars_source": "GitHub REST GET /repos/{owner}/{repo}: stargazers_count",
+    "star_refresh_window": [
+      "2026-11-17T13:06:52.751262+00:00",
+      "2026-11-17T13:06:55.082245+00:00"
+    ],
+    "compatibility": "Source inspection only. No new installs, hooks, external services or Android runtime tests."
+  }
+}

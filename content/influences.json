@@ -6,5 +6,133 @@
     "archive": "andrej-karpathy-skills-main.zip",
     "archive_sha256": "384f310b37e89242dc00c4b58e1d84abf6454eeb3d24c0f9412c56e251573cd7",
     "treatment": "Reviewed conceptual input: consequential assumptions, scoped edits and verifiable goals. Independently worded policy; no source text copied or redistributed. The supplied archive declares MIT but lacks a complete standalone notice."
+  },
+  {
+    "name": "affaan-m/ECC",
+    "repository": "https://github.com/affaan-m/ECC",
+    "revision": "3f14a103a8694e51c1df9a806217a6d0b5f7a6f7",
+    "reviewed_files": [
+      {
+        "path": "skills/security-scan/SKILL.md",
+        "sha256": "74bc3006fb15eef9cea6bf70a4e9cc45ec118ef00733d1c8226c9dc428f8d658"
+      }
+    ],
+    "treatment": "Reviewed conceptual input for independently authored visual review, audit evidence, skill intake, system diagrams or evaluation guidance. No original text, code, hooks, assets or scripts copied into the plugin; no runtime dependency or endorsement."
+  },
+  {
+    "name": "anthropics/skills",
+    "repository": "https://github.com/anthropics/skills",
+    "revision": "e4bb5d960d87126ff3b3a8af1a104b7db67560ba",
+    "reviewed_files": [
+      {
+        "path": "skills/skill-creator/SKILL.md",
+        "sha256": "dcd4803e61e913e6fc27294184cd3a71f09f5e924ff20c8a9a20173e7b3c2bcf"
+      }
+    ],
+    "treatment": "Reviewed conceptual input for independently authored visual review, audit evidence, skill intake, system diagrams or evaluation guidance. No original text, code, hooks, assets or scripts copied into the plugin; no runtime dependency or endorsement."
+  },
+  {
+    "name": "pbakaus/impeccable",
+    "repository": "https://github.com/pbakaus/impeccable",
+    "revision": "d41d9860b0094dcb68030657da63461212835aaa",
+    "reviewed_files": [
+      {
+        "path": ".devin/skills/impeccable/SKILL.md",
+        "sha256": "cc285387e0cf50554be4cd550b1a3f3c105193b51e0a07bbec9c594eeae02573"
+      }
+    ],
+    "treatment": "Reviewed conceptual input for independently authored visual review, audit evidence, skill intake, system diagrams or evaluation guidance. No original text, code, hooks, assets or scripts copied into the plugin; no runtime dependency or endorsement."
+  },
+  {
+    "name": "nextlevelbuilder/ui-ux-pro-max-skill",
+    "repository": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+    "revision": "e59ff376a41f7ca47b7541ad5c116495cbade3ee",
+    "reviewed_files": [
+      {
+        "path": ".claude/skills/ui-ux-pro-max/SKILL.md",
+        "sha256": "af9cf89efd1eac29495fb44f25b3fae8b96bf9ddbaaa2a47c6e835d9aa568a6f"
+      }
+    ],
+    "treatment": "Reviewed conceptual input for independently authored visual review, audit evidence, skill intake, system diagrams or evaluation guidance. No original text, code, hooks, assets or scripts copied into the plugin; no runtime dependency or endorsement."
+  },
+  {
+    "name": "Leonxlnx/taste-skill",
+    "repository": "https://github.com/Leonxlnx/taste-skill",
+    "revision": "f6b76575f949707b4e3c37cd86cb44b0b98643e8",
+    "reviewed_files": [
+      {
+        "path": "skills/taste-skill/SKILL.md",
+        "sha256": "0c7a5852a5217be79cab422c6d58329b776f0c25bd6da8a7a01707ce75be6206"
+      }
+    ],
+    "treatment": "Reviewed conceptual input for independently authored visual review, audit evidence, skill intake, system diagrams or evaluation guidance. No original text, code, hooks, assets or scripts copied into the plugin; no runtime dependency or endorsement."
+  },
+  {
+    "name": "cloudflare/security-audit-skill",
+    "repository": "https://github.com/cloudflare/security-audit-skill",
+    "revision": "c1c8a8c1471069fb0e188eeaff69b8e8db6564a8",
+    "reviewed_files": [
+      {
+        "path": "skills/security-audit/SKILL.md",
+        "sha256": "5e3e96a1e438d8f35fef0a1e38f02d4f00e2bdf910401b7dfe00e6779c6dac85"
+      },
+      {
+        "path": "skills/security-audit/VALIDATION-AND-REPORTING.md",
+        "sha256": "b892470cb89bb31f33403e050d4bdfbe2cdaef940ade1496fa65e32b2e129449"
+      }
+    ],
+    "treatment": "Reviewed conceptual input for independently authored visual review, audit evidence, skill intake, system diagrams or evaluation guidance. No original text, code, hooks, assets or scripts copied into the plugin; no runtime dependency or endorsement."
+  },
+  {
+    "name": "tt-a1i/archify",
+    "repository": "https://github.com/tt-a1i/archify",
+    "revision": "44781293f38728baf04dbad33ce1a0cef8c39cca",
+    "reviewed_files": [
+      {
+        "path": "archify/SKILL.md",
+        "sha256": "1382cfb7108b05e500b82af93c04fd7b694430d3908039bd92d634f01c1e7181"
+      }
+    ],
+    "treatment": "Reviewed conceptual input for independently authored visual review, audit evidence, skill intake, system diagrams or evaluation guidance. No original text, code, hooks, assets or scripts copied into the plugin; no runtime dependency or endorsement."
+  },
+  {
+    "name": "cathrynlavery/diagram-design",
+    "repository": "https://github.com/cathrynlavery/diagram-design",
+    "revision": "f6db0decea96de66b901331a0f79a8d4b147ebae",
+    "reviewed_files": [
+      {
+        "path": "skills/diagram-design/SKILL.md",
+        "sha256": "fba2015046dd6bfdd99b91c4b17c30bff5ebb3bd088de0e6863b41259c5026b8"
+      }
+    ],
+    "treatment": "Reviewed conceptual input for independently authored visual review, audit evidence, skill intake, system diagrams or evaluation guidance. No original text, code, hooks, assets or scripts copied into the plugin; no runtime dependency or endorsement."
+  },
+  {
+    "name": "thedaviddias/Front-End-Checklist",
+    "repository": "https://github.com/thedaviddias/Front-End-Checklist",
+    "revision": "e8d14d049010e2ce25afcd5e8609dfcbbe63e47e",
+    "reviewed_files": [
+      {
+        "path": "plugins/front-end-checklist/.claude-plugin/plugin.json",
+        "sha256": "6df3c7e02f631e6fb7c7be17173e2b5edf33c72c6becdee6b4876ff965d2eb61"
+      }
+    ],
+    "treatment": "Reviewed conceptual input for independently authored visual review, audit evidence, skill intake, system diagrams or evaluation guidance. No original text, code, hooks, assets or scripts copied into the plugin; no runtime dependency or endorsement."
+  },
+  {
+    "name": "emilkowalski/skills",
+    "repository": "https://github.com/emilkowalski/skills",
+    "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+    "reviewed_files": [
+      {
+        "path": "skills/animate/SKILL.md",
+        "sha256": "4ce49ea635ec175b45552bae070ea07b2d6aa5367047994250c1c095b71c8585"
+      },
+      {
+        "path": "skills/animate-expo/SKILL.md",
+        "sha256": "67e5d2ebe23b3edf52ce9d399532f2ead2bd7eff127919dd1c3bbe489b04dd4d"
+      }
+    ],
+    "treatment": "Reviewed conceptual input for independently authored visual review, audit evidence, skill intake, system diagrams or evaluation guidance. No original text, code, hooks, assets or scripts copied into the plugin; no runtime dependency or endorsement."
   }
 ]

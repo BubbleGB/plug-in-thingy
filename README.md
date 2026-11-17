@@ -2,7 +2,7 @@
 
 **Simple solutions. Sound workflows. Focused expertise.**
 
-[![CI](https://github.com/BubbleGB/unified-engineering/actions/workflows/ci.yml/badge.svg)](https://github.com/BubbleGB/unified-engineering/actions/workflows/ci.yml)
+[![CI](https://github.com/BubbleGB/plug-in-thingy/actions/workflows/ci.yml/badge.svg)](https://github.com/BubbleGB/plug-in-thingy/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](docs/DEVELOPMENT.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
@@ -15,16 +15,16 @@ guidelines.
 One workflow owns the task. Specialists add the checks that matter. Clear tasks
 stay small; consequential changes get proportionate planning and verification.
 
-**[Download releases](https://github.com/BubbleGB/unified-engineering/releases)** ·
+**[Download releases](https://github.com/BubbleGB/plug-in-thingy/releases)** ·
 **[Skill catalog](docs/SKILLS.md)** · **[Development](docs/DEVELOPMENT.md)** ·
 **[Changelog](CHANGELOG.md)**
 
 ## Install and use
 
-1. Download **`unified-engineering-0.2.1.zip`** from the
-   [v0.2.1 release](https://github.com/BubbleGB/unified-engineering/releases/tag/v0.2.1).
-   Source ZIPs and GitHub's automatic source downloads are for development,
-   not plugin upload.
+1. Use the delivered **`unified-engineering-0.3.0.zip`**, or build it from
+   source using the commands below. Published artifacts, when available, appear
+   on the repository releases page. Source ZIPs and GitHub's automatic source
+   downloads are for development, not plugin upload.
 2. Import the plugin ZIP through the supported plugin flow available to your
    ChatGPT account. Management controls may vary by account/client.
 3. Select the plugin/skill where supported, or ask in ordinary language:
@@ -80,7 +80,7 @@ Requires Python 3.10+ and Git. No pip/npm install is needed.
 ```sh
 python -m unittest discover -s tests -v
 python tools/build.py
-python tools/build.py --check dist/unified-engineering-0.2.1.zip
+python tools/build.py --check dist/unified-engineering-0.3.0.zip
 ```
 
 The build produces one rootless plugin ZIP with a portable manifest, Codex
@@ -90,7 +90,7 @@ zlib implementation; failed validation preserves the previous good ZIP.
 
 ## Verification and limits
 
-- **24 package/security tests** cover assembly, source mapping, invocation
+- **27 package/security tests** cover assembly, source mapping, invocation
   metadata, broken references, unsafe ZIP paths and failure behavior.
 - In a managed ChatGPT session, installed **0.2.0** exposed 24 automatic skills;
   all 30 skills and **95 Markdown documents** matched the release exactly.
@@ -99,7 +99,12 @@ zlib implementation; failed validation preserves the previous good ZIP.
 
 These checks do not establish universal implicit activation, Android UI controls,
 standalone behavior with other routers disabled, or installation of a new ZIP.
-Read the [current validation report](docs/VALIDATION-0.2.1.md) and
+Version **0.3.0** adds focused visual review, audit evidence, skill/plugin intake,
+source-linked diagrams and evaluation guidance through five conditional references.
+It records local reference hashes and rejects unsafe reference paths and oversized
+listing subtitles. No new runtime dependency or top-level skill is added.
+
+Read the [current validation report](docs/VALIDATION-0.3.md) and
 [evidence index](docs/README.md). Ponytail benchmark figures describe upstream
 Ponytail, not measured savings from this plugin.
 
@@ -123,5 +128,8 @@ MIT; retain [LICENSE](LICENSE), [ATTRIBUTION.md](ATTRIBUTION.md) and all origina
 notices. The built package retains four complete MIT notices and records 52
 selected source definitions and hashes in SOURCES.json. The Karpathy-inspired
 community source is conceptual input only; no text from it is redistributed.
-No Trail of Bits ShareAlike, OpenAI Apache or Vercel skill content is bundled.
+New specialist references are independently authored, with reviewed conceptual
+sources pinned in `content/influences.json`; no additional upstream text,
+scripts, hooks or assets are redistributed. No Trail of Bits ShareAlike,
+OpenAI Apache or Vercel skill content is bundled.
 This is an independent adaptation and implies no upstream endorsement.

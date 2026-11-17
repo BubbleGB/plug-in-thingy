@@ -7,7 +7,7 @@
 - [Development](DEVELOPMENT.md) and [release process](RELEASING.md)
 - [Contribution guide](../CONTRIBUTING.md)
 - [User instructions](../content/README.md)
-- [Current validation: 0.2.1](VALIDATION-0.2.1.md)
+- [Current validation: 0.3.0](VALIDATION-0.3.md)
 
 ## Historical evidence
 
@@ -29,3 +29,11 @@ instructions.
 Raw offline result files are under `tests/results/`; those are text simulations,
 not native activation tests. Plans in this directory and the original root
 PLAN.md are completed development records, not instructions to restart work.
+
+## Current research and integration
+
+- [GitHub skills/plugins survey](github-survey.md), [counts](github-survey.csv) and
+  [source/evaluation data](github-survey.json): a historical 17 November snapshot.
+- [0.3.0 release notes](releases/v0.3.0.md): the selected improvements and limits.
+- Behavior cases: `tests/research-scenarios.json`; these are prospective fixtures,
+  not a claim that fresh model or managed-host trials ran.

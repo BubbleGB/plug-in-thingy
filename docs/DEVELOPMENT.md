@@ -6,7 +6,7 @@ checkout, cloud account, upstream installer or executable hook is needed.
 ```sh
 python -m unittest discover -s tests -v
 python tools/build.py
-python tools/build.py --check dist/unified-engineering-0.2.1.zip
+python tools/build.py --check dist/unified-engineering-0.3.0.zip
 git diff --check
 ```
 
@@ -65,3 +65,17 @@ invalid encoding and malformed metadata are errors, not silently skipped content
 
 CI runs the same commands on Python 3.10 and 3.13. See
 [CONTRIBUTING.md](../CONTRIBUTING.md) and [releasing](RELEASING.md).
+
+## Local references and intake
+
+Declare independently authored references in `content/catalog.json` using a
+single Markdown filename from `content/`. The builder rejects path traversal,
+absolute names, symlinks and nonregular files before copying. Each destination
+is hashed in SOURCES.json with `origin: local` and a repository-relative source
+path. Upstream reference paths continue to be relative to inputs/.
+
+Before importing new instructions/scripts, use the package-intake method and
+check exact file-specific notices. A static package check is not a malware scan.
+The 0.3 behavior scenarios keep expected criteria out of model prompts. Fresh
+paired model and managed-host trials are separate from the package suite; record
+auth/tool blockers rather than treating saved scenarios as passing results.

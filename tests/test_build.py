@@ -1,8 +1,11 @@
 import importlib.util
+import hashlib
 import json
 from pathlib import Path
+import shutil
 import tempfile
 import unittest
+from unittest import mock
 import warnings
 import zipfile
 
@@ -81,6 +84,18 @@ class PackageTests(unittest.TestCase):
         overlay.mkdir()
         (overlay / 'plugin.json').write_text(json.dumps({**self.manifest, 'version': '9.0.0', 'skills': './skills/'}))
         self.assertTrue(any('version' in e for e in build.validate_package(self.root)))
+
+    def test_overlay_subtitle_limit(self):
+        overlay = self.root / '.codex-plugin'
+        overlay.mkdir()
+        for subtitle, valid in [('A' * 30, True), ('A' * 31, False), (' ', False), ([], False)]:
+            with self.subTest(subtitle=subtitle):
+                (overlay / 'plugin.json').write_text(json.dumps({
+                    **self.manifest, 'skills': './skills/',
+                    'interface': {'shortDescription': subtitle},
+                }))
+                errors = build.validate_package(self.root)
+                self.assertEqual(not errors, valid, errors)
 
     def test_deterministic_rootless_archive(self):
         a, b = self.base / 'a.zip', self.base / 'b.zip'
@@ -223,6 +238,39 @@ class PackageTests(unittest.TestCase):
     def test_refuses_to_assemble_over_existing_user_files(self):
         with self.assertRaises(ValueError):
             build.assemble(self.root)
+
+    def test_local_references_have_verifiable_provenance(self):
+        target = self.base / 'assembled'
+        build.assemble(target)
+        records = json.loads((target / 'SOURCES.json').read_text())['references']
+        local = next((r for r in records if r.get('origin') == 'local'
+                      and r['path'] == 'content/advanced-testing.md'), None)
+        self.assertIsNotNone(local)
+        source = SCRIPT.parents[1] / 'content/advanced-testing.md'
+        expected = hashlib.sha256(source.read_bytes()).hexdigest()
+        self.assertEqual(local['sha256'], expected)
+        self.assertEqual(hashlib.sha256((target / local['destination']).read_bytes()).hexdigest(), expected)
+
+    def test_local_reference_cannot_read_or_write_outside_its_declared_location(self):
+        project = self.base / 'project'
+        project.mkdir()
+        shutil.copytree(SCRIPT.parents[1] / 'content', project / 'content')
+        shutil.copyfile(SCRIPT.parents[1] / 'input-sources.json', project / 'input-sources.json')
+        shutil.copytree(SCRIPT.parents[1] / 'inputs', project / 'inputs')
+        outside = project / 'escape.md'
+        outside.write_text('Outside the maintained reference directory.\n')
+        (project / 'content/link.md').symlink_to(outside)
+        catalog_path = project / 'content/catalog.json'
+        catalog = json.loads(catalog_path.read_text())
+        entry = next(e for e in catalog if e['name'] == 'frontend')
+        for index, path in enumerate(('../escape.md', str(outside), 'link.md')):
+            with self.subTest(path=path):
+                entry['local_references'] = [path]
+                catalog_path.write_text(json.dumps(catalog))
+                with mock.patch.object(build, 'PROJECT', project):
+                    with self.assertRaisesRegex(ValueError, 'local reference'):
+                        build.assemble(self.base / ('assembly-' + str(index)))
+                self.assertEqual(outside.read_text(), 'Outside the maintained reference directory.\n')
 
 
 if __name__ == '__main__':

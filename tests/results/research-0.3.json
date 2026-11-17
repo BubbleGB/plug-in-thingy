@@ -1,0 +1,41 @@
+{
+  "version": "0.3.0",
+  "kind": "verification record, not fresh model application results",
+  "package_regressions": {
+    "red": "Three new tests failed against the original implementation; seven failing subcases covering unsafe local paths/symlink, missing local provenance and invalid subtitles. The initial isolated fixture was repaired to copy regular inputs before establishing this baseline.",
+    "before_log_sha256": "52c9fd643a6324b025b28509b0e210a25ff1a08cc4fcebf08ae13b61dc0fcc63"
+  },
+  "model_trials": {
+    "status": "blocked before model response",
+    "completed_baseline_samples": 0,
+    "completed_candidate_samples": 0,
+    "runner": "codex exec --ephemeral --sandbox read-only; text-only evaluation prompt",
+    "error": "Your access token could not be refreshed because you have since logged out or signed in to another account. Please sign in again.",
+    "actions": "Stopped after one failed attempt; no sign-in, credential change, installer, fallback model or delegated implementation.",
+    "baseline_prompt_sha256": "4b1fac13c95a6b89aa5764ada7e83f9a6a059f4c2263f7c2fe538079be3253d8",
+    "baseline_guidance_sha256": "1ae2d1aa6936147eb1a94e5b22ae149e27bb52e1f734369a80e9b2e5c5a69c43"
+  },
+  "scenarios": {
+    "path": "tests/research-scenarios.json",
+    "count": 14,
+    "status": "prospective fixtures; not a passing behavior suite",
+    "rubric": "Expected primary and criteria kept out of the attempted subject-model prompt."
+  },
+  "self_review": {
+    "kind": "one consolidated source/diff review, not independent review",
+    "checked": [
+      "new reference scope and instruction precedence",
+      "unchanged discovery metadata and six manual flags",
+      "unsafe local-reference source/destination paths",
+      "source/packaged local-reference hashes",
+      "subtitle types/length",
+      "preserved inputs and three Ponytail entries",
+      "honest offline/cloud/device evidence distinctions"
+    ],
+    "remaining_material_limits": [
+      "No completed fresh baseline/candidate samples",
+      "No managed upload or Android task trial for 0.3.0",
+      "Static intake checks are not a malware scan"
+    ]
+  }
+}

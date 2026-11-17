@@ -33,7 +33,7 @@ their installers, hooks or test suites as this project's setup.
 ```sh
 python -m unittest discover -s tests -v
 python tools/build.py
-python tools/build.py --check dist/unified-engineering-0.2.1.zip
+python tools/build.py --check dist/unified-engineering-0.3.0.zip
 git diff --check
 ```
 

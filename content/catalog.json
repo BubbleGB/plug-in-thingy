@@ -239,7 +239,8 @@
       }
     ],
     "local_references": [
-      "domain-vocabulary.md"
+      "domain-vocabulary.md",
+      "system-diagrams.md"
     ]
   },
   {
@@ -263,6 +264,9 @@
       {
         "source": "agent-skills/references/accessibility-checklist.md"
       }
+    ],
+    "local_references": [
+      "visual-review.md"
     ]
   },
   {
@@ -319,7 +323,9 @@
       }
     ],
     "local_references": [
-      "bug-variants.md"
+      "bug-variants.md",
+      "audit-evidence.md",
+      "skill-intake.md"
     ]
   },
   {
@@ -391,6 +397,10 @@
       {
         "source": "superpowers/skills/writing-skills/references/discovery.md"
       }
+    ],
+    "local_references": [
+      "skill-intake.md",
+      "skill-evaluation.md"
     ]
   },
   {
@@ -436,6 +446,9 @@
         ],
         "target": "module-design.md"
       }
+    ],
+    "local_references": [
+      "system-diagrams.md"
     ]
   },
   {
